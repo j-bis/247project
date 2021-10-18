@@ -31,7 +31,7 @@ public class Student {
     }
 
     public String searchEmployers() {
-        return '';
+        return "";
     }
 
     public String viewJobs() {
