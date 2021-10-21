@@ -1,12 +1,25 @@
 import java.util.ArrayList;
 
 public class Job {
+    private String id;
     private String title;
     private String employer;
     private String description;
-    private ArrayList<Reveiw> reviews;
+    //private ArrayList<Reveiw> reviews;
     
-    public Job(){}
+    public Job(){
+
+    }
+
+    public Job(String id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
+    public String getID() {
+        return this.id;
+    }
 
     public String getTitle() {
         return title;
