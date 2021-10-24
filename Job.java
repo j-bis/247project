@@ -38,7 +38,7 @@ public class Job {
     }
 
     public String toString() {
-        return "";
+        return "ID: " + getID() + "\n" + getTitle() + "\nDescription: " + getDescription();
     }
 
     public void addReview() {}
