@@ -16,14 +16,27 @@ public class DataLoader {
 
             for(int i=0; i < jobsJSON.size(); i++) {
 				JSONObject personJSON = (JSONObject)jobsJSON.get(i);
-				String id = (String)personJSON.get(PEOPLE_FIRST_NAME);
-				String title = (String)personJSON.get(PEOPLE_LAST_NAME);
-				String description = (String)personJSON.get(PEOPLE_PHONE_NUMBER);
+				String id = (String)personJSON.get("id");
+				String title = (String)personJSON.get("title");
+				String description = (String)personJSON.get("description");
 				
 				jobList.add(new Job(id, title, description));
-        }
+            }
 
         return jobList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+    return null;
     }
 
+    //public static ArrayList<>
+
+    public static void main(String[] args) {
+        ArrayList<Job> jobs = loadJobs();
+        
+        for (int i = 0; i < jobs.size(); i++) {
+            System.out.println(jobs.get(i));
+        }
+    }
 }
