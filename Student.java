@@ -1,17 +1,22 @@
 import java.util.ArrayList;
-public class Student {
+public class Student extends User {
+    private String id;
     private String displayName;
     private String username;
     private String password;
-    private boolean verified;
+    //private boolean verified;
     private ArrayList<Resume> myResumes;
 
-    public Student() {
-
+    public Student(String id, String displayName, String username, String password){//, ArrayList<Resume> myResumes) {
+        this.id = id;
+        this.displayName = displayName;
+        this.username = username;
+        this.password = password;
+        //this.myResumes = myResumes;
     }
 
-    public boolean verify() {
-        return false;
+    public void verify() {
+
     }
 
     public ResumeEditor addResume() {
@@ -39,7 +44,23 @@ public class Student {
     }
 
     public String getDisplayName() {
-        return "";
+        return this.displayName;
+    }
+
+    public String getID() {
+        return this.id;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPass() {
+        return this.password;
     }
     
+    public String toString() {
+        return getID() + "\n" + getDisplayName() + "\n" + getUsername() + "\n"
+        + getPass();
+    }
 }
