@@ -1,7 +1,7 @@
 [
   {
 	"id":"2d6159e1-46d9-4248-8356-c9576cacf5a1",
-	"type":0,
+	"type":"0",
 	"displayName":"Aaron Longshore",
 	"username":"arone",
 	"password":"waterfall,3463",
@@ -11,7 +11,7 @@
 	]
   },{
 	"id":"51798a15-a4fe-4611-a41e-8b70645a45d7",
-	"type":1,
+	"type":"1",
 	"displayName":"Microsoft Corporation", 
 	"username":"Microsoft842823AEE-2",
 	"password":"m-w5346.4w5aw4ze",
@@ -21,13 +21,13 @@
 	]
   },{
 	"id":"1ba201e1-9660-40a1-bee8-0a34368ad1af",
-	"type":2,
+	"type":"2",
 	"displayName":"DAN",
 	"username":"DanielShafer",
 	"password":"password123"
   },{
 	"id":"664e9df3-7131-473d-928a-6640675aa3f3",
-	"type":1,
+	"type":"1",
 	"displayName":"PayPal",
 	"username":"PayPal3593",
 	"password":"f9f2-sm32-s83hd74.38",
@@ -37,7 +37,7 @@
 	]
   },{
 	"id":"8f4a9b35-4e4b-4487-9fe0-35f08cef09e7",
-	"type":0,
+	"type":"0",
 	"displayName":"Anthony Ramirez",
 	"username":"ant-z",
 	"password":"beebobeeboodiedboop-5454",
