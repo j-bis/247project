@@ -1,6 +1,7 @@
 import java.util.*;
 public class User {
-    
+    private String id;
+
     public User() {
 
     }
@@ -15,5 +16,9 @@ public class User {
 
     public ArrayList<String> getResumeView(String keyword) {
         return null;
+    }
+
+    public getID() {
+
     }
 }
