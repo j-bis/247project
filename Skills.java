@@ -1,13 +1,13 @@
-import jdk.tools.jlink.resources.plugins;
+import java.util.ArrayList;
 
-public class Skills extends ResumeDecorator {
-    Resume resume;
+public class Skills {
+    private ArrayList<String> skills;
 
-    public Skills(Resume resume) {
-
+    public Skills(ArrayList<String> skills) {
+        this.skills = skills;
     }
 
-    public void customize() {
-        
-    }    
+    public String toString() {
+        return "";
+    }
 }

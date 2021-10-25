@@ -1,10 +1,16 @@
+public class Education {
+    private String school;
+    private String degree;
+    private String gpa;
 
-public class Education extends ResumeDecorator {
-    
-    public Education(Resume resume) {
-        super(resume);
+    public Education(String school, String degree, String gpa) {
+        this.school = school;
+        this.degree = degree;
+        this.gpa = gpa;
     }
 
-    @Override
-    public void customize() {}
+    public String toString() {
+        return "School: " + this.school + "\nDegree: " + this.degree
+        + "\nGPA: " + this.gpa;
+    }
 }

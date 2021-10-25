@@ -5,13 +5,15 @@ public class Student extends User {
     private String username;
     private String password;
     //private boolean verified;
+    private String contactInfo;
     private ArrayList<Resume> myResumes;
 
-    public Student(String id, String displayName, String username, String password){//, ArrayList<Resume> myResumes) {
+    public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
         this.id = id;
         this.displayName = displayName;
         this.username = username;
         this.password = password;
+        this.contactInfo = contactInfo;
         //this.myResumes = myResumes;
     }
 
@@ -58,9 +60,13 @@ public class Student extends User {
     public String getPass() {
         return this.password;
     }
+
+    public String getContactInfo() {
+        return getDisplayName() + "\n" + this.contactInfo;
+    }
     
     public String toString() {
-        return getID() + "\n" + getDisplayName() + "\n" + getUsername() + "\n"
+        return getID() + "\n" + getContactInfo() + "\n" + getUsername() + "\n"
         + getPass();
     }
 }

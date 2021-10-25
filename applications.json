@@ -3,20 +3,19 @@
 	"id":"44d5cd4b-de75-4261-a213-0c5afc537930",
 	"jobListing":"d6383f24-c509-4ee3-84eb-8bda3946290b",
 	"applicants":
-	[{
+	[
 	"2d6159e1-46d9-4248-8356-c9576cacf5a1",
-	"d9f00a67-add3-4c86-9501-3129148ff3a3"
-	},{
+	"d9f00a67-add3-4c86-9501-3129148ff3a3",
 	"8f4a9b35-4e4b-4487-9fe0-35f08cef09e7",
 	"1a5168c6-56d6-46a7-bcb3-1736dbd3ec72"
-	]}
+	]
   },{
 	"id":"052906ce-7e7b-4595-a220-c53bc1b5d2da",
 	"jobListing":"0b8af18d-62b9-4e86-84e1-1cc0f82f60fa",
 	"applicants":
-	[{
+	[
 	"2d6159e1-46d9-4248-8356-c9576cacf5a1",
 	"d9f00a67-add3-4c86-9501-3129148ff3a3"
-	]}
+	]
   }
 ]

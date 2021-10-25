@@ -1,10 +1,16 @@
+public class Experience {
+    private String title;
+    private String duties;
+    private String company;
 
-public class Experience extends ResumeDecorator {
-    
-    public Experience(Resume resume) {
-        super(resume);
+    public Experience(String title, String duties, String company) {
+        this.title = title;
+        this.duties = duties;
+        this.company = company;
     }
 
-    @Override
-    public void customize() {}
+    public String toString() {
+        return "Job title: " + this.title + "\nJob description: " + this.duties
+        + "\nPrevious Employer: " + this.company;
+    }
 }
