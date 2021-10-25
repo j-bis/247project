@@ -18,7 +18,7 @@ public class User {
         return null;
     }
 
-    public getID() {
-
+    public String getID() {
+        
     }
 }
