@@ -1,5 +1,7 @@
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
@@ -142,14 +144,16 @@ public class DataLoader {
 				JSONObject personJSON = (JSONObject)jobsJSON.get(i);
 				String id = (String)personJSON.get("id");
 				String jobListing = (String)personJSON.get("jobListing");
-				String[] entries = (String[])personJSON.get("applicants");
+				JSONArray entries = (JSONArray)personJSON.get("applicants");
                 //ArrayList<User> users = loadUsers();
-                ArrayList<String> applicants = new ArrayList<String>();
+                ArrayList<Student> applicants = new ArrayList<Student>();
                 ArrayList<String> resumes = new ArrayList<String>();
-                for (int j = 0; j < entries.length; j+=2) {
-                    applicants.add(entries[j]);
+                for (int j = 0; j < entries.size(); j+=2) {
+                    JSONObject entryJSON = (JSONObject)entries.get(j);
+                    UUID applicantId = UUID.fromString((String)entryJSON.get("sdfdf"));
+                    applicants.add(UserList.getStudentById(entries.get(j)));
                 }
-				for (int j = 1; j< entries.length; j+=2) {
+				for (int j = 1; j< entries.size(); j+=2) {
                     resumes.add(entries[j]);
                 }
 				apps.add(new Application(id, jobListing, applicants, resumes));
