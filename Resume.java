@@ -18,6 +18,10 @@ public class Resume {
         return this.title;
     }
 
+    public String getID() {
+        return this.id;
+    }
+
     public String printEducation() {
         String ret = "";
         for (Education i : education) {

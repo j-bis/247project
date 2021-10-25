@@ -30,6 +30,32 @@ public class DataLoader {
     return null;
     }
 
+    public static ArrayList<Student> loadStudents() {
+        ArrayList<Student> students = new ArrayList<Student>();
+        try {
+            FileReader reader = new FileReader("users.json");
+            JSONParser parser = new JSONParser();
+            JSONArray userJSON = (JSONArray)new JSONParser().parse(reader);
+            
+            for(int i=0; i < userJSON.size(); i++) {
+				JSONObject personJSON = (JSONObject)userJSON.get(i);
+                if (Integer.parseInt((String)personJSON.get("type")) == 0) {
+                    String id = (String)personJSON.get("id");
+                    String displayName = (String)personJSON.get("displayName");
+                    String username = (String)personJSON.get("username");
+                    String password = (String)personJSON.get("password");
+                    String contactInfo = (String)personJSON.get("contactInfo");
+
+                    students.add(new Student(id, displayName, username, password, contactInfo));
+                }
+        }
+            return students;
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+    return null;
+    }
+
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
@@ -104,33 +130,43 @@ public class DataLoader {
             return null;
     }
 
-    // public static ArrayList<Application> loadApplications() {
-    //     ArrayList<Application> apps = new ArrayList<Application>();
+    public static ArrayList<Application> loadApplications() {
+        ArrayList<Application> apps = new ArrayList<Application>();
 
-    //     try {
-    //         FileReader reader = new FileReader("applications.json");
-    //         JSONParser parser = new JSONParser();
-    //         JSONArray jobsJSON = (JSONArray)new JSONParser().parse(reader);
+        try {
+            FileReader reader = new FileReader("applications.json");
+            JSONParser parser = new JSONParser();
+            JSONArray jobsJSON = (JSONArray)new JSONParser().parse(reader);
 
-    //         for(int i=0; i < jobsJSON.size(); i++) {
-	// 			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
-	// 			String id = (String)personJSON.get("id");
-	// 			String title = (String)personJSON.get("title");
-	// 			String description = (String)personJSON.get("description");
-				
-	// 			apps.add(new Application(id, title, description));
-    //         }
+            for(int i=0; i < jobsJSON.size(); i++) {
+				JSONObject personJSON = (JSONObject)jobsJSON.get(i);
+				String id = (String)personJSON.get("id");
+				String jobListing = (String)personJSON.get("jobListing");
+				String[] entries = (String[])personJSON.get("applicants");
+                //ArrayList<User> users = loadUsers();
+                ArrayList<String> applicants = new ArrayList<String>();
+                ArrayList<String> resumes = new ArrayList<String>();
+                for (int j = 0; j < entries.length; j+=2) {
+                    applicants.add(entries[j]);
+                }
+				for (int j = 1; j< entries.length; j+=2) {
+                    resumes.add(entries[j]);
+                }
+				apps.add(new Application(id, jobListing, applicants, resumes));
+            }
 
-    //     return apps;
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // return null;
-    // }
+        return apps;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    return null;
+    }
 
     public static void main(String[] args) {
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
+        ArrayList<Student> students = loadStudents();
+        ArrayList<Application> apps = loadApplications();
         
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println(jobs.get(i));
@@ -139,6 +175,16 @@ public class DataLoader {
         System.out.println("\nUSERS\n");
         for (int i = 0; i < users.size(); i++) {
             System.out.println(users.get(i) + "\n");
+        }
+
+        System.out.println("\nstudents\n");
+        for (Student i : students) {
+            System.out.println(i.getContactInfo() + "\n");
+        }
+
+        System.out.println("\napplications\n");
+        for (Application i : apps) {
+            System.out.println(i + "\n");
         }
     }
 }
