@@ -46,8 +46,9 @@ public class DataLoader {
                     String displayName = (String)personJSON.get("displayName");
                     String username = (String)personJSON.get("username");
                     String password = (String)personJSON.get("password");
+                    String contactInfo = (String)personJSON.get("contactInfo");
 
-                    users.add(new Student(id, displayName, username, password));
+                    users.add(new Student(id, displayName, username, password, contactInfo));
                 } else if (Integer.parseInt((String)personJSON.get("type")) == 1) {
                     String id = (String)personJSON.get("id");
                     String displayName = (String)personJSON.get("displayName");
@@ -72,6 +73,60 @@ public class DataLoader {
             }
     return null;
     }
+
+    public static ArrayList<Resume> loadResumes() {
+        ArrayList<Resume> resumes = new ArrayList<Resume>();
+
+        try {
+                    FileReader reader = new FileReader("resumes.json");
+                    JSONParser parser = new JSONParser();
+                    JSONArray jobsJSON = (JSONArray)new JSONParser().parse(reader);
+        
+                    for(int i=0; i < jobsJSON.size(); i++) {
+            			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
+            			String id = (String)personJSON.get("itemId");
+            			String title = (String)personJSON.get("title");
+            			ArrayList<Education> education = (ArrayList<Education>)personJSON.get("education");
+            			ArrayList<Experience> experience = (ArrayList<Experience>)personJSON.get("experience");
+            			String[] skills = (String[])personJSON.get("skills");
+                        ArrayList<String> skillsAL = new ArrayList<String>();
+                        for (int j = 0; j< skills.length; j++) {
+                            skillsAL.add(skills[j]);
+                        } 
+
+            			resumes.add(new Resume(id, title, experience, education, skillsAL));
+                    }
+        
+                return resumes;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            return null;
+    }
+
+    // public static ArrayList<Application> loadApplications() {
+    //     ArrayList<Application> apps = new ArrayList<Application>();
+
+    //     try {
+    //         FileReader reader = new FileReader("applications.json");
+    //         JSONParser parser = new JSONParser();
+    //         JSONArray jobsJSON = (JSONArray)new JSONParser().parse(reader);
+
+    //         for(int i=0; i < jobsJSON.size(); i++) {
+	// 			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
+	// 			String id = (String)personJSON.get("id");
+	// 			String title = (String)personJSON.get("title");
+	// 			String description = (String)personJSON.get("description");
+				
+	// 			apps.add(new Application(id, title, description));
+    //         }
+
+    //     return apps;
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // return null;
+    // }
 
     public static void main(String[] args) {
         ArrayList<Job> jobs = loadJobs();
