@@ -30,8 +30,13 @@ public class UserList {
         return users;
     }
 
-    public boolean addUser() {
-        users.add(new User());
+    public boolean addUser(String type) {
+        if (type.equals("") || !type.equals("0") || 
+            !type.equals("1") || !type.equals("2")) {
+                return false;
+            }
+
+        users.add(UserFactory.createUser(type));
         return true;
     }
 

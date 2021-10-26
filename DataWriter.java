@@ -42,8 +42,8 @@ public class DataWriter {
         userDetails.put("id", user.getID().toString());
         userDetails.put("type", user.getType());
 		userDetails.put("displayName", user.getDisplayName());
-		userDetails.put("username", user.getUserName());
-		userDetails.put("password", user.getPassword());
+		userDetails.put("username", user.getUsername());
+		userDetails.put("password", user.getPass());
 
         if (user.getType().equals("0")) {
             userDetails.put("contactInfo", user.getContactInfo());

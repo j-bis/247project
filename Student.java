@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 public class Student extends User {
+    private final String type;
     private String id;
     private String displayName;
     private String username;
@@ -9,6 +10,7 @@ public class Student extends User {
     private ArrayList<Resume> myResumes;
 
     public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
+        type = "0";
         this.id = id;
         this.displayName = displayName;
         this.username = username;
@@ -63,6 +65,10 @@ public class Student extends User {
 
     public String getContactInfo() {
         return getDisplayName() + "\n" + this.contactInfo;
+    }
+
+    public String getType() {
+        return type;
     }
     
     public String toString() {

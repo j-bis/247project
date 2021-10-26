@@ -6,7 +6,7 @@ public class UserFactory {
         } else if (type.equalsIgnoreCase("employer")) {
             return new Employer();
         } else if (type.equalsIgnoreCase("administrator")) {
-            return new Administrator();
+            return new Admin();
         }
 
         return null;
