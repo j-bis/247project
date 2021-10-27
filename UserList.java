@@ -1,11 +1,13 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class UserList {
     private static UserList userList;
     private static ArrayList<User> users;
+    private static ArrayList<Student> students;
 
     private UserList() {
         users = DataLoader.loadUsers();
+        students = DataLoader.loadStudents();
     }
     
     public static UserList getInstance() {
@@ -16,6 +18,16 @@ public class UserList {
         return userList;
     }
 
+    public static User getStudentById(UUID id) {
+        String StringID = id.toString();
+        for (User student : students) {
+            if (student.getID().equals(StringID)) {
+                return student;
+            }
+        }
+
+        return null;
+    }
         //getStudentById(UUID id)
     public static User getUserById(String id) {
         for (User user : users) {
