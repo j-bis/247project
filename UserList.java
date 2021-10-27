@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class UserList {
     private static UserList userList;
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
 
     private UserList() {
         users = DataLoader.loadUsers();
@@ -16,7 +16,7 @@ public class UserList {
         return userList;
     }
 
-    public User getUserByID(String id) {
+    public static User getUserById(String id) {
         for (User user : users) {
             if (user.getID().equals(id)) {
                 return user;
