@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.xml.crypto.Data;
 public class Application {
     private String id;
     private String jobListingID;
-    private ArrayList<String> applicants;
-    private ArrayList<String> resumes;
+    private ArrayList<Student> applicants;
+    private ArrayList<Resume> resumes;
 
-    public Application(String id, String jobListingID, ArrayList<String> applicants, ArrayList<String> resumes) {
+    public Application(String id, String jobListingID, ArrayList<Student> applicants, ArrayList<Resume> resumes) {
         this.id = id;
         this.jobListingID = jobListingID;
         this.applicants = applicants;
@@ -26,7 +26,7 @@ public class Application {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();
         ArrayList<Resume> resumes = DataLoader.loadResumes();
-        for (String i : applicants) {
+        for (int i=0;i<applicants.size();i++){
             for (Student j : students) {
                 if (i.equals(j.getID())) {
                     ret += j.getContactInfo() + "\n";
@@ -40,4 +40,9 @@ public class Application {
         }
         return ret;
     }
+
+    public String toString() {
+        return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
+    }
+
 }

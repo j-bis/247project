@@ -145,17 +145,28 @@ public class DataLoader {
 				String id = (String)personJSON.get("id");
 				String jobListing = (String)personJSON.get("jobListing");
 				JSONArray entries = (JSONArray)personJSON.get("applicants");
-                //ArrayList<User> users = loadUsers();
+
+                ArrayList<UUID> applicantIDs = new ArrayList<UUID>();
+                ArrayList<UUID> resumeIDs = new ArrayList<UUID>();
+                
                 ArrayList<Student> applicants = new ArrayList<Student>();
-                ArrayList<String> resumes = new ArrayList<String>();
-                for (int j = 0; j < entries.size(); j+=2) {
-                    JSONObject entryJSON = (JSONObject)entries.get(j);
-                    UUID applicantId = UUID.fromString((String)entryJSON.get("sdfdf"));
-                    applicants.add(UserList.getStudentById(entries.get(j)));
+                ArrayList<Resume> resumes = new ArrayList<Resume>();
+
+                for (int j=0;j<entries.size();j++) {
+                    JSONObject IDs = (JSONObject)entries.get(j);
+                    //String applicantID = (String)IDs.get("user");
+                    //String resumeID = (String)IDs.get("resume");
+                    applicantIDs.add(UUID.fromString((String)IDs.get("user")));
+                    resumeIDs.add(UUID.fromString((String)IDs.get("resume")));
                 }
-				for (int j = 1; j< entries.size(); j+=2) {
-                    resumes.add(entries[j]);
+                for (int j=0;j<applicantIDs.size();j++) {
+                    System.out.println(j);
+                    applicants.add(UserList.getStudentById(applicantIDs.get(j)));
+                    //resumes.add(ResumeList.getResumeById(resumeIDs.get(j)));
                 }
+
+                //ArrayList<User> users = loadUsers();
+                
 				apps.add(new Application(id, jobListing, applicants, resumes));
             }
 
@@ -167,6 +178,7 @@ public class DataLoader {
     }
 
     public static void main(String[] args) {
+        UserList userlist = new UserList();
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();

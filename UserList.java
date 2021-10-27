@@ -5,7 +5,7 @@ public class UserList {
     private static ArrayList<User> users;
     private static ArrayList<Student> students;
 
-    private UserList() {
+    public UserList() {
         users = DataLoader.loadUsers();
         students = DataLoader.loadStudents();
     }
@@ -18,9 +18,9 @@ public class UserList {
         return userList;
     }
 
-    public static User getStudentById(UUID id) {
+    public static Student getStudentById(UUID id) {
         String StringID = id.toString();
-        for (User student : students) {
+        for (Student student : students) {
             if (student.getID().equals(StringID)) {
                 return student;
             }
