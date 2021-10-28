@@ -91,7 +91,7 @@ public class DataLoader {
                     //to string to UUID from jobs arraylist
                     for (int j=0;j<jobs.size();j++) {
                         jobIDs.add(UUID.fromString((String)jobs.get(i)));
-                        MyJobs.add(JobList.getJobById((UUID.fromString((String)jobs.get(i))));
+                        MyJobs.add(JobLists.getJobById((UUID.fromString((String)jobs.get(i))));
                     }
 
 
