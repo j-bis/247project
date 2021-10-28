@@ -39,5 +39,8 @@ public class Admin extends User{
         return getID() + "\n" + getDisplayName() + "\n" + getUsername() + "\n"
         + getPass();
     }
+    public boolean deleteUser() {
+        return false;
+    }
     
 }
