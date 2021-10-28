@@ -1,5 +1,7 @@
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
@@ -80,6 +82,14 @@ public class DataLoader {
                     String displayName = (String)personJSON.get("displayName");
                     String username = (String)personJSON.get("username");
                     String password = (String)personJSON.get("password");
+                    JSONArray jobs = (JSONArray)personJSON.get("jobListings");
+                    
+
+                    ArrayList<UUID> jobIDs = new ArrayList<UUID>();
+                    for (int j=0;j<jobs.size();j++) {
+                        
+                    }
+
 
                     users.add(new Employer(id, displayName, username, password));
                 } else {
@@ -87,7 +97,7 @@ public class DataLoader {
                     String displayName = (String)personJSON.get("displayName");
                     String username = (String)personJSON.get("username");
                     String password = (String)personJSON.get("password");
-
+                    
                     users.add(new Admin(id, displayName, username, password));
                 }
 				
@@ -112,10 +122,23 @@ public class DataLoader {
             			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
             			String id = (String)personJSON.get("itemId");
             			String title = (String)personJSON.get("title");
-            			ArrayList<Education> education = (ArrayList<Education>)personJSON.get("education");
+
+                        JSONArray educations = (JSONArray)personJSON.get("education");
+                        JSONArray experiences = (JSONArray)personJSON.get("experience");
+                        JSONArray skills = (JSONArray)personJSON.get("skills");
+
+                        
+                        ArrayList<Education> education = (ArrayList<Education>)personJSON.get("education");
             			ArrayList<Experience> experience = (ArrayList<Experience>)personJSON.get("experience");
-            			String[] skills = (String[])personJSON.get("skills");
                         ArrayList<String> skillsAL = new ArrayList<String>();
+
+                        for (int j=0;j<educations.size();j++) {
+
+
+                        }
+
+            			
+                        
                         for (int j = 0; j< skills.length; j++) {
                             skillsAL.add(skills[j]);
                         } 
