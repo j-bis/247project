@@ -114,6 +114,12 @@ public class DataLoader {
             			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
             			String id = (String)personJSON.get("itemId");
             			String title = (String)personJSON.get("title");
+
+                        JSONArray educations = (JSONArray)personJSON.get("education");
+                        for (int j=0;j<educations.size();j++) {
+                            
+                        }
+
             			ArrayList<Education> education = (ArrayList<Education>)personJSON.get("education");
             			ArrayList<Experience> experience = (ArrayList<Experience>)personJSON.get("experience");
             			String[] skills = (String[])personJSON.get("skills");
@@ -178,7 +184,7 @@ public class DataLoader {
     }
 
     public static void main(String[] args) {
-        UserList userlist = UserList.getInstance();
+        UserList userlist = new UserList();
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();
