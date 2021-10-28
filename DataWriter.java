@@ -156,7 +156,7 @@ public class DataWriter {
     }
 
     public static void main(String[] args) {
-        // saveUsers();
+        saveUsers();
         // saveJobs();
         // saveApplications();
         // saveResume();
