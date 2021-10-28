@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.xml.crypto.Data;
 
@@ -33,6 +34,10 @@ public class JobListings {
 
     public ArrayList<Job> getJobs() {
         return jobs;
+    }
+
+    public Job getUUID() {
+        return new Job();
     }
 
     public void saveJobs() {
