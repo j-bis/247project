@@ -21,4 +21,7 @@ public class User {
     public String getID() {
         
     }
+    public void checkVerified() {
+
+    }
 }
