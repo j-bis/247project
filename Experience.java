@@ -1,12 +1,12 @@
 public class Experience {
-    private String title;
-    private String duties;
-    private String company;
+    private String title; //Creates String title
+    private String duties; //Creates String duties
+    private String company; //Creates String company
 
     public Experience(String title, String duties, String company) {
-        this.title = title;
-        this.duties = duties;
-        this.company = company;
+        this.title = title; //Calls String title
+        this.duties = duties; //Calls String duties
+        this.company = company; //Calls String company
     }
 
     
@@ -19,14 +19,14 @@ public class Experience {
     /**
      * @return String return the title
      */
-    public String getTitle() {
+    public String getTitle() { //Method to return title
         return title;
     }
 
     /**
      * @return String return the duties
      */
-    public String getDuties() {
+    public String getDuties() { //Method to return duties
         return duties;
     }
 
@@ -34,7 +34,7 @@ public class Experience {
     /**
      * @return String return the company
      */
-    public String getCompany() {
+    public String getCompany() { //Method to return company
         return company;
     }
 
