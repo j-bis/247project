@@ -5,5 +5,5 @@ public abstract class ResumeDecorator extends Resume {
 
     }
 
-    public abstract void customize();
+    public abstract void customize(); //Method to customize Resume.
 }
