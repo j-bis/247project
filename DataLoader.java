@@ -83,7 +83,20 @@ public class DataLoader {
                     String username = (String)personJSON.get("username");
                     String password = (String)personJSON.get("password");
 
-                    users.add(new Employer(id, displayName, username, password));
+                    JSONArray jobs = (JSONArray)personJSON.get("jobListings");
+                    ArrayList<UUID> jobIDs = new ArrayList<UUID>();
+                    ArrayList<Job> MyJobs = new ArrayList<Job>();
+
+                    //adds a UUID to the jobIDs arraylist converting jsonobject
+                    //to string to UUID from jobs arraylist
+                    for (int j=0;j<jobs.size();j++) {
+                        jobIDs.add(UUID.fromString((String)jobs.get(i)));
+                        MyJobs.add(JobList.getJobById((UUID.fromString((String)jobs.get(i))));
+                    }
+
+
+
+                    users.add(new Employer(id, displayName, username, password, MyJobs));
                 } else {
                     String id = (String)personJSON.get("id");
                     String displayName = (String)personJSON.get("displayName");
@@ -184,7 +197,7 @@ public class DataLoader {
     }
 
     public static void main(String[] args) {
-        UserList userlist = new UserList();
+        UserList userlist = UserList.getInstance();
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();
