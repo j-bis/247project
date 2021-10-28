@@ -7,6 +7,10 @@ public class Skills {
         this.skills = skills;
     }
 
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
     public String toString() {
         return "";
     }

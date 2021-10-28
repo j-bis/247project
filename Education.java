@@ -9,6 +9,18 @@ public class Education {
         this.gpa = gpa;
     }
 
+    public String getSchool() {
+        return school;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public String getGpa() {
+        return gpa;
+    }
+
     public String toString() {
         return "School: " + this.school + "\nDegree: " + this.degree
         + "\nGPA: " + this.gpa;

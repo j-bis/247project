@@ -1,48 +1,49 @@
 [
   {
-	"itemId":"d9f00a67-add3-4c86-9501-3129148ff3a3",
-	"title":"resume1",
-	"education":
-	[{
-	"school":"University of North Dakota",
-	"degree":"A.S. in Computer Science",
-	"gpa":"3.4"
-	}],
-	"experience":
-	[{
-	"title":"Fry Cook",
-	"duties":"Assured proper production of food to be fit for consumption.",
-	"company":"McDonalds"
-	},{
-	"title":"Cashier",
-	"duties":"Mediated the exchange of goods and services.",
-	"company":"Walmart"
-	}],
-	"skills":
-	[
-	"Experienced in Java",
-	"Proficient in Python"
-	]
-  },{
-	"itemId":"1a5168c6-56d6-46a7-bcb3-1736dbd3ec72",
-	"title":"resumeForMicrosoft",
-	"education":
-	[{
-	"school":"University of Georgia",
-	"degree":"B.S. in Computer Engineering",
-	"gpa":"3.6"
-	}],
-	"experience":
-	[{
-	"title":"none",
-	"duties":"",
-	"company":""
-	}],
-	"skills":
-	[
-	"Experienced with C#",
-	"Javascript",
-	"certified Python developer"
-	]
+    "itemId": "d9f00a67-add3-4c86-9501-3129148ff3a3",
+    "title": "resume1",
+    "education": [
+      {
+        "school": "University of North Dakota",
+        "degree": "A.S. in Computer Science",
+        "gpa": "3.4"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Fry Cook",
+        "duties": "Assured proper production of food to be fit for consumption.",
+        "company": "McDonalds"
+      },
+      {
+        "title": "Cashier",
+        "duties": "Mediated the exchange of goods and services.",
+        "company": "Walmart"
+      }
+    ],
+    "skills": ["Experienced in Java", "Proficient in Python"]
+  },
+  {
+    "itemId": "1a5168c6-56d6-46a7-bcb3-1736dbd3ec72",
+    "title": "resumeForMicrosoft",
+    "education": [
+      {
+        "school": "University of Georgia",
+        "degree": "B.S. in Computer Engineering",
+        "gpa": "3.6"
+      }
+    ],
+    "experience": [
+      {
+        "title": "none",
+        "duties": "",
+        "company": ""
+      }
+    ],
+    "skills": [
+      "Experienced with C#",
+      "Javascript",
+      "certified Python developer"
+    ]
   }
 ]

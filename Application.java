@@ -22,6 +22,10 @@ public class Application {
         return this.jobListingID;
     }
 
+    public ArrayList<Student> getApplicants() {
+        return applicants;
+    }
+
     public String printAppsAndResumes() {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();

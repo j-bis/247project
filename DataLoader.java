@@ -178,7 +178,7 @@ public class DataLoader {
     }
 
     public static void main(String[] args) {
-        UserList userlist = new UserList();
+        UserList userlist = UserList.getInstance();
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();

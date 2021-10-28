@@ -20,7 +20,7 @@ public class ApplicationList {
         return applicants;
     }
 
-    public boolean addApplication(String id, String jobListingID, ArrayList<String> applicant, ArrayList<String> resumes) {
+    public boolean addApplication(String id, String jobListingID, ArrayList<Student> applicant, ArrayList<Resume> resumes) {
         if (id.equals("") || jobListingID.equals("") || applicant.isEmpty() || resumes.isEmpty()) {
             return false;
         }

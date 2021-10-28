@@ -22,6 +22,18 @@ public class Resume {
         return this.id;
     }
 
+    public ArrayList<Experience> getExperience() {
+        return experience;
+    }
+
+    public ArrayList<Education> getEducation() {
+        return education;
+    }
+
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
     public String printEducation() {
         String ret = "";
         for (Education i : education) {

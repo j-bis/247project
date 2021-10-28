@@ -33,7 +33,7 @@ public class DataWriter {
 
     public static void saveResume() {
         ResumeList resumeList = ResumeList.getInstance();
-        ArrrayList<Resume> resumes = resumeList.getResumes();
+        ArrayList<Resume> resumes = resumeList.getResumes();
         JSONArray jsonResume = new JSONArray();
 
         for (int i = 0; i < resumes.size(); i++) {
@@ -53,6 +53,46 @@ public class DataWriter {
         }
 
         writeToFile("applicationTest.json", jsonApplicants);
+    }
+
+    public static JSONObject getResumeJSON(Resume resume) {
+        JSONObject resumeDetails = new JSONObject();
+        resumeDetails.put("itemId", resume.getID());
+        resumeDetails.put("title", resume.getTitle());
+        
+        JSONArray eduJSONArray = new JSONArray();
+        ArrayList<Education> eduArray = resume.getEducation();
+        for (int i = 0; i < eduArray.size(); i++) {
+            Education edu = eduArray.get(i)
+            JSONObject eduObject = new JSONObject();
+            eduObject.put("school", edu.getSchool());
+            eduObject.put("degree", edu.getDegree());
+            eduObject.put("gpa", edu.getGpa());
+
+            eduJSONArray.add(eduObject);
+        }     
+        resumeDetails.put("education", eduJSONArray);
+
+        JSONArray expJSONArray = new JSONArray();
+        ArrayList<Experience> expArray = resume.getExperience();
+        for (int i = 0; i < expArray.size(); i++) {
+            Experience exp = expArray.get(i);
+            JSONObject expObject = new JSONObject();
+            expObject.put("title", exp.getTitle());
+            expObject.put("duties", exp.getDuties());
+            expObject.put("company", exp.getCompany());
+
+            expJSONArray.add(expObject);
+        }
+        resumeDetails.put("experience", expJSONArray);
+
+
+        JSONArray skillsJsonArray = new JSONArray();
+        ArrayList<String> skillsArray = resume.getSkills();
+        expJSONArray.add(skillsArray);
+        resumeDetails.put("skills", expJSONArray.toJSONString());
+
+        return resumeDetails;    
     }
 
     public static JSONObject getApplicantsJSON(Application application) {
@@ -102,8 +142,8 @@ public class DataWriter {
     }
 
     public static void main(String[] args) {
-        saveUsers();
-        saveJobs();
+        // saveUsers();
+        // saveJobs();
         // saveApplications();
         // saveResume();
     }
