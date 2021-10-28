@@ -9,4 +9,5 @@ public class ResumeEditor {
     public void newResume() {}
     public void editResume() {}
     public void saveResume() {}
+    public void deleteReume() {}
 }
