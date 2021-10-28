@@ -14,6 +14,9 @@ public class Admin extends User{
         this.username = username;
         this.password = password;
     }
+    public String viewUsers() {
+        return "";
+    }
 
     public String getDisplayName() {
         return this.displayName;
