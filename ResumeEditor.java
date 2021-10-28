@@ -6,8 +6,8 @@ public class ResumeEditor {
 
     public ResumeEditor() {}
 
-    public void newResume() {}
-    public void editResume() {}
-    public void saveResume() {}
-    public void deleteReume() {}
+    public void newResume() {} //Method to create new Resume.
+    public void editResume() {} //Method to edit Resume.
+    public void saveResume() {} // Method to save Resume.
+    public void deleteReume() {} // Method to delete Resume.
 }
