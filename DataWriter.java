@@ -1,6 +1,8 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -44,6 +46,7 @@ public class DataWriter {
     }
 
     public static void saveApplications() {
+        UserList userList = UserList.getInstance();
         ApplicationList applist = ApplicationList.getInstance();
         ArrayList<Application> applicant = applist.getApplicants();
         JSONArray jsonApplicants = new JSONArray();
@@ -99,7 +102,18 @@ public class DataWriter {
         JSONObject applicantDetails = new JSONObject();
         applicantDetails.put("id", application.getID());
         applicantDetails.put("jobListing", application.getjobID());
-        applicantDetails.put("applicants", application.getApplicants());
+        
+        JSONArray appJSONArray = new JSONArray();
+        ArrayList<Student> applicant = application.getApplicants();
+        for (int i = 0; i < applicant.size(); i++) {
+            Student stu = applicant.get(i);
+            JSONObject stuObject = new JSONObject();
+            stuObject.put("user", stu.getID());
+            stuObject.put("resume", stu.getResumesID());
+            appJSONArray.add(stuObject);
+        }
+
+        applicantDetails.put("applicants", appJSONArray);
 
         return applicantDetails;
     }
@@ -113,10 +127,10 @@ public class DataWriter {
 		userDetails.put("password", user.getPass());
 
         if (user.getType().equals("0")) {
-            userDetails.put("contactInfo", user.getContactInfo());
-            userDetails.put("resumes", user.getResumesID());
+            userDetails.put("contactInfo", user.getContactInfo()); // Asks about saving display name in contact info
+
         } else if (user.getType().equals("1")) {
-            userDetails.put("jobListings", user.getJobID());
+            userDetails.put("jobListings", user.getJobID()); // Ask about saving job listings under users
         }
 
         return userDetails;

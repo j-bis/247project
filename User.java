@@ -19,9 +19,41 @@ public class User {
     }
 
     public String getID() {
-        
+        return null;
     }
+
+    public String getType() {
+        return null;
+    }
+
+
+
     public void checkVerified() {
 
     }
+
+    public Object getUsername() {
+        return null;
+    }
+
+    public Object getDisplayName() {
+        return null;
+    }
+
+    public Object getPass() {
+        return null;
+    }
+
+    public Object getContactInfo() {
+        return null;
+    }
+
+    public ArrayList<UUID> getResumesID() {
+        return null;
+    }
+
+    public Object getJobID() {
+        return null;
+    }
+
 }
