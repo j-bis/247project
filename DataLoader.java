@@ -217,14 +217,14 @@ public class DataLoader {
         ResumeList resumeList = ResumeList.getInstance();
         ApplicationList applicationList = ApplicationList.getInstance();
 
-        ArrayList<Job> jobs = loadJobs();
-        ArrayList<User> users = loadUsers();
-        ArrayList<Student> students = loadStudents();
-        ArrayList<Application> apps = loadApplications();
-        ArrayList<Resume> resumes = loadResumes();
+        ArrayList<Job> jobs = jobListings.getJobs();
+        ArrayList<User> users = userlist.getUsers();
+        //ArrayList<Student> students = StudentList
+        ArrayList<Application> apps = applicationList.getApplicants();
+        ArrayList<Resume> resumes = resumeList.getResumes();
         
 
-        /*
+        
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println(jobs.get(i));
         }
@@ -234,10 +234,12 @@ public class DataLoader {
             System.out.println(users.get(i) + "\n");
         }
 
+        /*
         System.out.println("\nstudents\n");
         for (Student i : students) {
             System.out.println(i.getContactInfo() + "\n");
         }
+        */
 
         System.out.println("\napplications\n");
         for (Application i : apps) {
@@ -249,6 +251,6 @@ public class DataLoader {
             System.out.println(i + "\n");
         }
 
-        */
+        
     }
 }
