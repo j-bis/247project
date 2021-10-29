@@ -83,19 +83,15 @@ public class DataLoader {
                     String username = (String)personJSON.get("username");
                     String password = (String)personJSON.get("password");
 
-                    JSONArray jobs = (JSONArray)personJSON.get("jobListings");
-                    ArrayList<UUID> jobIDs = new ArrayList<UUID>();
+                    JSONArray jobsArray = (JSONArray)personJSON.get("jobListings");
+                    //ArrayList<UUID> jobIDs = new ArrayList<UUID>();
                     ArrayList<Job> MyJobs = new ArrayList<Job>();
 
-                    //adds a UUID to the jobIDs arraylist converting jsonobject
-                    //to string to UUID from jobs arraylist
-                    for (int j=0;j<jobs.size();j++) {
-                        jobIDs.add(UUID.fromString((String)jobs.get(i)));
-                        MyJobs.add(JobListings.getJobById((UUID.fromString((String)jobs.get(i))));
+                    //converts jsonobject at j to string then to uuid then gets job by uuid from jobListings and adds it to myJobs
+                    for (int j=0;j<jobsArray.size();j++) {
+                        //System.out.println((String)jobsArray.get(j));
+                        MyJobs.add(JobListings.getJobByUUID((UUID.fromString((String)jobsArray.get(j)))));
                     }
-
-
-
                     users.add(new Employer(id, displayName, username, password, MyJobs));
                 } else {
                     String id = (String)personJSON.get("id");
@@ -127,21 +123,33 @@ public class DataLoader {
             			JSONObject personJSON = (JSONObject)jobsJSON.get(i);
             			String id = (String)personJSON.get("itemId");
             			String title = (String)personJSON.get("title");
+                        ArrayList<Education> educationArray = new ArrayList<Education>();
+                        ArrayList<Experience> experienceArray = new ArrayList<Experience>();
 
                         JSONArray educations = (JSONArray)personJSON.get("education");
                         for (int j=0;j<educations.size();j++) {
-                            
+                            JSONObject education = (JSONObject)educations.get(j);
+                            String school = (String)education.get("school");
+                            String degree = (String)education.get("degree");
+                            String gpa = (String)education.get("gpa");
+                            educationArray.add(new Education(school, degree, gpa));
+                        }
+                        JSONArray experiences = (JSONArray)personJSON.get("experience");
+                        for (int j=0;j<experiences.size();j++) {
+                            JSONObject experience = (JSONObject)experiences.get(j);
+                            String ExperienceTitle = (String)experience.get("title");
+                            String duties = (String)experience.get("duties");
+                            String company = (String)experience.get("company");
+                            experienceArray.add(new Experience(ExperienceTitle, duties, company));
                         }
 
-            			ArrayList<Education> education = (ArrayList<Education>)personJSON.get("education");
-            			ArrayList<Experience> experience = (ArrayList<Experience>)personJSON.get("experience");
-            			String[] skills = (String[])personJSON.get("skills");
+                        JSONArray skills = (JSONArray)personJSON.get("skills");
                         ArrayList<String> skillsAL = new ArrayList<String>();
-                        for (int j = 0; j< skills.length; j++) {
-                            skillsAL.add(skills[j]);
+                        for (int j = 0; j< skills.size(); j++) {
+                            skillsAL.add((String)skills.get(j));
                         } 
 
-            			resumes.add(new Resume(id, title, experience, education, skillsAL));
+            			resumes.add(new Resume(id, title, experienceArray, educationArray, skillsAL));
                     }
         
                 return resumes;
@@ -179,7 +187,7 @@ public class DataLoader {
                     resumeIDs.add(UUID.fromString((String)IDs.get("resume")));
                 }
                 for (int j=0;j<applicantIDs.size();j++) {
-                    System.out.println(j);
+                    //System.out.println(j);
                     applicants.add(UserList.getStudentById(applicantIDs.get(j)));
                     //resumes.add(ResumeList.getResumeById(resumeIDs.get(j)));
                 }
@@ -197,11 +205,19 @@ public class DataLoader {
     }
 
     public static void main(String[] args) {
+
+        //in facade load jobs > users > applicants > resumes
+        JobListings jobListings = JobListings.getInstance();
         UserList userlist = UserList.getInstance();
+        
+        ResumeList resumeList = ResumeList.getInstance();
+        ApplicationList applicationList = ApplicationList.getInstance();
+
         ArrayList<Job> jobs = loadJobs();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();
         ArrayList<Application> apps = loadApplications();
+        ArrayList<Resume> resumes = loadResumes();
         
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println(jobs.get(i));
@@ -219,6 +235,11 @@ public class DataLoader {
 
         System.out.println("\napplications\n");
         for (Application i : apps) {
+            System.out.println(i + "\n");
+        }
+
+        System.out.println("\nRESUMES\n");
+        for (Resume i : resumes) {
             System.out.println(i + "\n");
         }
     }
