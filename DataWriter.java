@@ -66,7 +66,7 @@ public class DataWriter {
         JSONArray eduJSONArray = new JSONArray();
         ArrayList<Education> eduArray = resume.getEducation();
         for (int i = 0; i < eduArray.size(); i++) {
-            Education edu = eduArray.get(i)
+            Education edu = eduArray.get(i);
             JSONObject eduObject = new JSONObject();
             eduObject.put("school", edu.getSchool());
             eduObject.put("degree", edu.getDegree());
@@ -156,9 +156,9 @@ public class DataWriter {
     }
 
     public static void main(String[] args) {
-        saveUsers();
+        // saveUsers();
         // saveJobs();
         // saveApplications();
-        // saveResume();
+        saveResume();
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ApplicationList {
     private static ApplicationList appList;
-    private ArrayList<Application> applicants;
+    private static ArrayList<Application> applicants;
 
     private ApplicationList() {
         applicants = DataLoader.loadApplications();
