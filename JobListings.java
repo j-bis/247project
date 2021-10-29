@@ -5,10 +5,11 @@ import javax.xml.crypto.Data;
 
 public class JobListings {
     private static JobListings jobListing;
-    private ArrayList<Job> jobs;
+    private static ArrayList<Job> jobs;
     private ArrayList<Job> searchResults;
 
     private JobListings() {
+        System.out.println("jobs loaded");
         jobs = DataLoader.loadJobs();
     }
 
@@ -42,5 +43,14 @@ public class JobListings {
 
     public void saveJobs() {
         DataWriter.saveJobs();
+    }
+
+    public static Job getJobByUUID(UUID id) {
+        for (Job i : jobs) {
+            if (i.getID().equals(id.toString())) {
+                return i;
+            }
+        }
+        return null;
     }
 }
