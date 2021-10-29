@@ -26,6 +26,7 @@ public class Application {
         return applicants;
     }
 
+    /*
     public String printAppsAndResumes() {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();
@@ -44,7 +45,7 @@ public class Application {
         }
         return ret;
     }
-
+    */
     public String toString() {
         return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
     }

@@ -7,6 +7,11 @@ public class Admin extends User{
     private String username;
     private String password;
 
+
+    public Admin() {
+        type = "2";
+    }
+
     public Admin(String id, String displayName, String username, String password) {
         type = "2";
         this.id = id;

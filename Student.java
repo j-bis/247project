@@ -9,6 +9,10 @@ public class Student extends User {
     private String contactInfo;
     private ArrayList<Resume> myResumes;
 
+    public Student() {
+        type = "0";
+    }
+
     public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
         type = "0";
         this.id = id;

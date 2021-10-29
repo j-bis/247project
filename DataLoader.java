@@ -8,6 +8,10 @@ import org.json.simple.parser.JSONParser;;
 
 public class DataLoader {
 
+    public DataLoader() {
+
+    }
+
     public static ArrayList<Job> loadJobs() {
         ArrayList<Job> jobList = new ArrayList<Job>();
 
@@ -219,6 +223,8 @@ public class DataLoader {
         ArrayList<Application> apps = loadApplications();
         ArrayList<Resume> resumes = loadResumes();
         
+
+        /*
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println(jobs.get(i));
         }
@@ -242,5 +248,7 @@ public class DataLoader {
         for (Resume i : resumes) {
             System.out.println(i + "\n");
         }
+
+        */
     }
 }
