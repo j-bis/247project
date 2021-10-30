@@ -26,6 +26,14 @@ public class Application {
         return applicants;
     }
 
+    public ArrayList<Resume> getResumes() {
+        return resumes;
+    }
+
+    public String getResumeId(int index) {
+        return resumes.get(index).getID();
+    }
+
     public String printAppsAndResumes() {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();

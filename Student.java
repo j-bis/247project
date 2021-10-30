@@ -9,14 +9,14 @@ public class Student extends User {
     private String contactInfo;
     private ArrayList<Resume> myResumes;
 
-    public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
+    public Student(String id, String displayName, String username, String password, String contactInfo, ArrayList<Resume> myResumes) {
         type = "0";
         this.id = id;
         this.displayName = displayName;
         this.username = username;
         this.password = password;
         this.contactInfo = contactInfo;
-        //this.myResumes = myResumes;
+        this.myResumes = myResumes;
     }
 
     public void verify() {

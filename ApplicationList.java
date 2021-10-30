@@ -16,7 +16,7 @@ public class ApplicationList {
         return appList;
     }
 
-    public ArrayList<Application> getApplicants() {
+    public static ArrayList<Application> getApplicants() {
         return applicants;
     }
 

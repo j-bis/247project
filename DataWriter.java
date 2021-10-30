@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 public class DataWriter {
     
     public static void saveUsers() {
+        ResumeList resumeList = ResumeList.getInstance();
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -47,6 +48,7 @@ public class DataWriter {
 
     public static void saveApplications() {
         UserList userList = UserList.getInstance();
+        ResumeList resumeList = ResumeList.getInstance();
         ApplicationList applist = ApplicationList.getInstance();
         ArrayList<Application> applicant = applist.getApplicants();
         JSONArray jsonApplicants = new JSONArray();
@@ -105,11 +107,11 @@ public class DataWriter {
         
         JSONArray appJSONArray = new JSONArray();
         ArrayList<Student> applicant = application.getApplicants();
+        ArrayList<Resume> appResume = application.getResumes();
         for (int i = 0; i < applicant.size(); i++) {
-            Student stu = applicant.get(i);
             JSONObject stuObject = new JSONObject();
-            stuObject.put("user", stu.getID());
-            stuObject.put("resume", stu.getResumesID());
+            stuObject.put("user", applicant.get(i).getID());
+            stuObject.put("resume", appResume.get(i).getID());
             appJSONArray.add(stuObject);
         }
 
@@ -156,9 +158,9 @@ public class DataWriter {
     }
 
     public static void main(String[] args) {
-        // saveUsers();
-        // saveJobs();
-        // saveApplications();
+        saveJobs();
+        saveUsers();
         saveResume();
+        saveApplications();
     }
 }

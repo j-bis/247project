@@ -48,7 +48,7 @@ public abstract class User {
         return null;
     }
 
-    public ArrayList<UUID> getResumesID() {
+    public String getResumesID() {
         return null;
     }
 
