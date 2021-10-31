@@ -1,7 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,7 +17,7 @@ public class DataWriter {
             jsonUsers.add(getUserJSON(users.get(i)));
         }
 
-        writeToFile("usersTest.json", jsonUsers);
+        writeJsonToFile("usersTest.json", jsonUsers);
     }
 
     public static void saveJobs() {
@@ -30,7 +29,7 @@ public class DataWriter {
             jsonJobs.add(getJobJSON(jobs.get(i)));
         }
 
-        writeToFile("jobListingsTest.json", jsonJobs);
+        writeJsonToFile("jobListingsTest.json", jsonJobs);
 
     }
 
@@ -43,7 +42,7 @@ public class DataWriter {
             jsonResume.add(getResumeJSON(resumes.get(i)));
         }
 
-        writeToFile("resumeTest.json", jsonResume);
+        writeJsonToFile("resumeTest.json", jsonResume);
     }
 
     public static void saveApplications() {
@@ -57,7 +56,7 @@ public class DataWriter {
             jsonApplicants.add(getApplicantsJSON(applicant.get(i)));
         }
 
-        writeToFile("applicationTest.json", jsonApplicants);
+        writeJsonToFile("applicationTest.json", jsonApplicants);
     }
 
     public static JSONObject getResumeJSON(Resume resume) {
@@ -134,9 +133,9 @@ public class DataWriter {
             userDetails.put("contactInfo", user.getContactInfo());
 
             JSONArray userResArray = new JSONArray();
-            ArrayList<Resume> resumeID = user.getResumes();
-            for (int i = 0; i < resumeID.size(); i++) {
-                userResArray.add(resumeID.get(i).getID());
+            ArrayList<Resume> resume = user.getResumes();
+            for (int i = 0; i < resume.size(); i++) {
+                userResArray.add(resume.get(i).getID());
             }
 
             userDetails.put("resume", userResArray);
@@ -162,7 +161,19 @@ public class DataWriter {
         return jobDetails;
     }
 
-    private static void writeToFile(String fileName, JSONArray jsonArray) {
+    public static void writeResumeToTxtFile(Student student, int idxResume) {
+        ArrayList<Resume> stuResumes = student.getResumes();
+        try (FileWriter file = new FileWriter("Resume.txt")) {
+            file.write(student.getContactInfo());
+            file.write("\n**********************************\n");
+            file.write(stuResumes.get(idxResume).toString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeJsonToFile(String fileName, JSONArray jsonArray) {
         try (FileWriter file = new FileWriter(fileName)) {
 
             file.write(jsonArray.toJSONString());
@@ -178,5 +189,9 @@ public class DataWriter {
         saveUsers();
         saveResume();
         saveApplications();
+
+        ArrayList<Student> student = DataLoader.loadStudents();
+        Student stu1 = student.get(0);
+        writeResumeToTxtFile(stu1, 0);
     }
 }

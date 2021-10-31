@@ -220,7 +220,7 @@ public class DataLoader {
 
     public static void main(String[] args) {
 
-        //in facade load jobs > users > applicants > resumes
+        //in facade load jobs > resumes > users > applicants
         JobListings jobListings = JobListings.getInstance();
         ResumeList resumeList = ResumeList.getInstance();
         UserList userlist = UserList.getInstance();

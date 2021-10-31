@@ -62,7 +62,7 @@ public class Student extends User {
         return "";
     }
 
-    public ArrayList<Resume> getResumesID() {
+    public ArrayList<Resume> getResumes() {
         return myResumes;
     }
 
