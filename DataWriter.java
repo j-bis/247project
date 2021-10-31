@@ -129,10 +129,24 @@ public class DataWriter {
 		userDetails.put("password", user.getPass());
 
         if (user.getType().equals("0")) {
-            userDetails.put("contactInfo", user.getContactInfo()); // Asks about saving display name in contact info
+            userDetails.put("contactInfo", user.getContactInfo());
+
+            JSONArray userResArray = new JSONArray();
+            ArrayList<Resume> resumeID = user.getResumesID();
+            for (int i = 0; i < resumeID.size(); i++) {
+                userResArray.add(resumeID.get(i).getID());
+            }
+
+            userDetails.put("resume", userResArray);
 
         } else if (user.getType().equals("1")) {
-            userDetails.put("jobListings", user.getJobID()); // Ask about saving job listings under users
+            JSONArray userJsonArray = new JSONArray();
+            ArrayList<Job> job = user.getJob();
+            for (int i = 0; i < job.size(); i++) {
+                userJsonArray.add(job.get(i).getID());
+            }
+
+            userDetails.put("jobListings", userJsonArray);
         }
 
         return userDetails;

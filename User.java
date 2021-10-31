@@ -48,11 +48,11 @@ public abstract class User {
         return null;
     }
 
-    public String getResumesID() {
+    public ArrayList<Resume> getResumesID() {
         return null;
     }
 
-    public Object getJobID() {
+    public ArrayList<Job> getJob() {
         return null;
     }
 

@@ -47,6 +47,10 @@ public class Student extends User {
         return "";
     }
 
+    public ArrayList<Resume> getResumesID() {
+        return myResumes;
+    }
+
     public String getDisplayName() {
         return this.displayName;
     }
