@@ -32,6 +32,10 @@ public class ProgramUI {
 
     }
 
+    public void displayApplications() {
+
+    }
+    
     public void displayUsers() {
 
     }
