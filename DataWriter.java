@@ -134,7 +134,7 @@ public class DataWriter {
             userDetails.put("contactInfo", user.getContactInfo());
 
             JSONArray userResArray = new JSONArray();
-            ArrayList<Resume> resumeID = user.getResumesID();
+            ArrayList<Resume> resumeID = user.getResumes();
             for (int i = 0; i < resumeID.size(); i++) {
                 userResArray.add(resumeID.get(i).getID());
             }

@@ -3,11 +3,9 @@ public abstract class User {
     private String id;
 
     public User() {
-
     }
 
     public void verify() {
-
     }
 
     public ArrayList<String> getResumeView() {
@@ -18,37 +16,23 @@ public abstract class User {
         return null;
     }
 
-    public String getID() {
+    public abstract String getID();
+    
+    public abstract String getType();
+
+    public abstract boolean checkVerified();
+
+    public abstract String getUsername();
+
+    public abstract String getDisplayName();
+
+    public abstract String getPass();
+
+    public String getContactInfo() {
         return null;
     }
 
-    public String getType() {
-        return null;
-    }
-
-
-
-    public void checkVerified() {
-
-    }
-
-    public Object getUsername() {
-        return null;
-    }
-
-    public Object getDisplayName() {
-        return null;
-    }
-
-    public Object getPass() {
-        return null;
-    }
-
-    public Object getContactInfo() {
-        return null;
-    }
-
-    public ArrayList<Resume> getResumesID() {
+    public ArrayList<Resume> getResumes() {
         return null;
     }
 

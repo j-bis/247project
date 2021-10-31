@@ -1,13 +1,17 @@
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Student extends User {
     private final String type;
     private String id;
     private String displayName;
     private String username;
     private String password;
-    //private boolean verified;
+    private boolean verified = false;
     private String contactInfo;
     private ArrayList<Resume> myResumes;
+
 
     public Student(String id, String displayName, String username, String password, String contactInfo, ArrayList<Resume> myResumes) {
         type = "0";
@@ -19,8 +23,19 @@ public class Student extends User {
         this.myResumes = myResumes;
     }
 
-    public void verify() {
-
+    // source: https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    public boolean verify(String emailAddress) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@email.sc.edu";
+        
+        Pattern pattern = Pattern.compile(regex);
+        if (emailAddress == null) {
+            verified = false;
+        } else if (pattern.matcher(emailAddress).matches()) {
+            verified = true;
+        }
+        
+        return verified;
     }
 
     public ResumeEditor addResume() {
@@ -78,5 +93,10 @@ public class Student extends User {
     public String toString() {
         return getID() + "\n" + getContactInfo() + "\n" + getUsername() + "\n"
         + getPass();
+    }
+
+    @Override
+    public boolean checkVerified() {
+        return verified;
     }
 }
