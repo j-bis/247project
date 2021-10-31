@@ -94,8 +94,10 @@ public class DataWriter {
 
         JSONArray skillsJsonArray = new JSONArray();
         ArrayList<String> skillsArray = resume.getSkills();
-        expJSONArray.add(skillsArray);
-        resumeDetails.put("skills", expJSONArray.toJSONString());
+        for (int i = 0; i < skillsArray.size(); i++) {
+            skillsJsonArray.add(skillsArray.get(i));
+        }
+        resumeDetails.put("skills", skillsJsonArray);
 
         return resumeDetails;    
     }
