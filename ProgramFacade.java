@@ -27,13 +27,14 @@ public class ProgramFacade {
 
 
     public ProgramFacade() {
-        /*
+        
         loadJobs();
         loadUsers();
         loadStudents();
         loadApplications();
         loadResumes();
 
+        /*
         printJobs();
         printUsers();
         printStudents();
@@ -102,11 +103,11 @@ public class ProgramFacade {
 
 
     // finds
-    public void findUser(String username) {
+    public void findStudent(String username) {
 
-        if(username == null) return;
+        if(username == null || username == "-exit-") return;
 
-        if(!userList.findUser(username)) {
+        if(!userList.findStudent(username)) {
             System.out.println("This user does not exist");
             return;
         }

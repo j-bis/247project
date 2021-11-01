@@ -37,7 +37,6 @@ public class ProgramUI {
             
             switch(userCommand) {
                 case(0):
-                    displayLogin();
                     findUser();
                     break;
                 case(1):
@@ -53,9 +52,6 @@ public class ProgramUI {
 
     }
 
-    private void displayLogin() {
-        System.out.println("\nEnter Username:\n");
-    }
 
     private void displayMainMenu() {
         System.out.println("\n***** Main Menu*****\n");
@@ -79,13 +75,13 @@ public class ProgramUI {
 
 
     private void findUser() {
-        System.out.println("\n-----Checking for valid username-----\n");
-        programFacade.findUser(getUserUserName());
+        programFacade.findStudent(getUserUserName());
 
     }
 
     private String getUserUserName() {
         System.out.println("Enter Username");
+        System.out.println("-----Checking for valid username-----\n");
 
         while(true) {
             String username = scanner.nextLine().trim().toLowerCase();
@@ -95,8 +91,10 @@ public class ProgramUI {
             System.out.println("You may not leave this blank");
             System.out.println("Would you like to enter username again (y) or return to main menu (n): ");
             String command = scanner.nextLine().trim().toLowerCase();
-            if(command == "n") return null;
+            if(command.equals("n")) break;
+            System.out.println(command);
         }
+        return "-exit-";
     }
     public void displayResumes() {
 

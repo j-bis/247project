@@ -43,8 +43,17 @@ public class UserList {
         return users;
     }
 
+    /*
     public boolean findUser(String username) {
         if (users.contains(username)) return true;
+        return false;
+    }
+    */
+
+    public boolean findStudent(String username) {
+        for (int i=0; i<students.size(); i++) {
+            if (students.get(i).getUsername().equals(username)) return true;
+        }
         return false;
     }
 
