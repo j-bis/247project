@@ -69,6 +69,37 @@ public class DataLoader {
     return null;
     }
 
+    public static ArrayList<Employer> loadEmployers() {
+        ArrayList<Employer> employers = new ArrayList<Employer>();
+        try {
+            FileReader reader = new FileReader("users.json");
+            JSONParser parser = new JSONParser();
+            JSONArray userJSON = (JSONArray)new JSONParser().parse(reader);
+
+            for (int i=0; i<userJSON.size(); i++) {
+                JSONObject personJSON = (JSONObject)userJSON.get(i);
+                if (Integer.parseInt((String)personJSON.get("type")) == 1) {
+                    String id = (String)personJSON.get("id");
+                    String displayName = (String)personJSON.get("displayName");
+                    String username = (String)personJSON.get("username");
+                    String password = (String)personJSON.get("password");
+
+                    JSONArray jobsArray = (JSONArray)personJSON.get("jobListings");
+                    ArrayList<Job> myJobs = new ArrayList<Job>();
+
+                    for(int j=0; j<jobsArray.size(); j++) {
+                        myJobs.add(JobListings.getJobByUUID((UUID.fromString((String)jobsArray.get(j)))));
+                    }
+
+                    employers.add(new Employer(id, displayName, username, password, myJobs));
+                }
+            }
+            return employers;
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+    return null;
+    }
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
