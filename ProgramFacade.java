@@ -102,16 +102,21 @@ public class ProgramFacade {
 
 
     // finds
-    public void findUser(String username) {
+    public void findStudent(String username) {
 
         if(username == null) return;
 
-        if(!userList.findUser(username)) {
+        if(!userList.findStudent(username)) {
             System.out.println("This user does not exist");
             return;
         }
         System.out.println("User Found");
     }
+
+    // find student
+    //find empl
+    // find admin
+
 
     public Job findJob() {
         return new Job();

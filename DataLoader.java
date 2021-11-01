@@ -100,6 +100,32 @@ public class DataLoader {
             }
     return null;
     }
+
+    public static ArrayList<Admin> loadAdmins() {
+        ArrayList<Admin> admins = new ArrayList<Admin>();
+        try {
+            FileReader reader = new FileReader("users.json");
+            JSONParser parser = new JSONParser();
+            JSONArray userJSON = (JSONArray)new JSONParser().parse(reader);
+
+            for (int i=0; i<userJSON.size(); i++) {
+                JSONObject personJSON = (JSONObject)userJSON.get(i);
+                if (Integer.parseInt((String)personJSON.get("type")) == 2) {
+                    String id = (String)personJSON.get("id");
+                    String displayName = (String)personJSON.get("displayName");
+                    String username = (String)personJSON.get("username");
+                    String password = (String)personJSON.get("password");
+
+                    admins.add(new Admin(id, displayName, username, password));
+                }
+            }
+            return admins;
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+    return null;
+    }
+
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 

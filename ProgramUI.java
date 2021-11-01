@@ -38,7 +38,7 @@ public class ProgramUI {
             switch(userCommand) {
                 case(0):
                     displayLogin();
-                    findUser();
+                    findStudent();
                     break;
                 case(1):
                     //logout();
@@ -78,9 +78,9 @@ public class ProgramUI {
 
 
 
-    private void findUser() {
+    private void findStudent() {
         System.out.println("\n-----Checking for valid username-----\n");
-        programFacade.findUser(getUserUserName());
+        programFacade.findStudent(getUserUserName());
 
     }
 
