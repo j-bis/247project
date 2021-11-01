@@ -26,9 +26,6 @@ public class Application {
         return applicants;
     }
 
-<<<<<<< HEAD
-    /*
-=======
     public ArrayList<Resume> getResumes() {
         return resumes;
     }
@@ -36,8 +33,7 @@ public class Application {
     public String getResumeId(int index) {
         return resumes.get(index).getID();
     }
-
->>>>>>> 0c0f919a00e2b68546186e6bd3d8ba20be739fc9
+    /*
     public String printAppsAndResumes() {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();

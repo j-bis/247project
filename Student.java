@@ -12,16 +12,12 @@ public class Student extends User {
     private String contactInfo;
     private ArrayList<Resume> myResumes;
 
-<<<<<<< HEAD
+
     public Student() {
         type = "0";
     }
 
-    public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
-=======
-
     public Student(String id, String displayName, String username, String password, String contactInfo, ArrayList<Resume> myResumes) {
->>>>>>> 0c0f919a00e2b68546186e6bd3d8ba20be739fc9
         type = "0";
         this.id = id;
         this.displayName = displayName;

@@ -43,6 +43,11 @@ public class UserList {
         return users;
     }
 
+    public boolean findUser(String username) {
+        if (users.contains(username)) return true;
+        return false;
+    }
+
     public boolean addUser(String type) {
         if (type.equals("") || !type.equals("0") || 
             !type.equals("1") || !type.equals("2")) {

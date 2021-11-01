@@ -230,48 +230,39 @@ public class DataLoader {
         UserList userlist = UserList.getInstance();
         ApplicationList applicationList = ApplicationList.getInstance();
 
-<<<<<<< HEAD
-        ArrayList<Job> jobs = jobListings.getJobs();
-        ArrayList<User> users = userlist.getUsers();
-        //ArrayList<Student> students = StudentList
-        ArrayList<Application> apps = applicationList.getApplicants();
-        ArrayList<Resume> resumes = resumeList.getResumes();
-        
-
-=======
         ArrayList<Job> jobs = loadJobs();
         ArrayList<Resume> resumes = loadResumes();
         ArrayList<User> users = loadUsers();
         ArrayList<Student> students = loadStudents();
         ArrayList<Application> apps = loadApplications();
->>>>>>> 0c0f919a00e2b68546186e6bd3d8ba20be739fc9
+        
+
         
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println(jobs.get(i));
         }
-
+        
         System.out.println("\nUSERS\n");
         for (int i = 0; i < users.size(); i++) {
             System.out.println(users.get(i) + "\n");
         }
-
-        /*
+        
         System.out.println("\nstudents\n");
         for (Student i : students) {
             System.out.println(i.getContactInfo() + "\n");
         }
-        */
-
+        
         System.out.println("\napplications\n");
         for (Application i : apps) {
             System.out.println(i + "\n");
         }
-
+        
         System.out.println("\nRESUMES\n");
         for (Resume i : resumes) {
             System.out.println(i + "\n");
         }
 
+        
         
     }
 }
