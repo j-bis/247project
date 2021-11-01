@@ -1,30 +1,49 @@
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Student extends User {
     private final String type;
     private String id;
     private String displayName;
     private String username;
     private String password;
-    //private boolean verified;
+    private boolean verified = false;
     private String contactInfo;
     private ArrayList<Resume> myResumes;
 
+<<<<<<< HEAD
     public Student() {
         type = "0";
     }
 
     public Student(String id, String displayName, String username, String password, String contactInfo){//, ArrayList<Resume> myResumes) {
+=======
+
+    public Student(String id, String displayName, String username, String password, String contactInfo, ArrayList<Resume> myResumes) {
+>>>>>>> 0c0f919a00e2b68546186e6bd3d8ba20be739fc9
         type = "0";
         this.id = id;
         this.displayName = displayName;
         this.username = username;
         this.password = password;
         this.contactInfo = contactInfo;
-        //this.myResumes = myResumes;
+        this.myResumes = myResumes;
     }
 
-    public void verify() {
-
+    // source: https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    public boolean verify(String emailAddress) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@email.sc.edu";
+        
+        Pattern pattern = Pattern.compile(regex);
+        if (emailAddress == null) {
+            verified = false;
+        } else if (pattern.matcher(emailAddress).matches()) {
+            verified = true;
+        }
+        
+        return verified;
     }
 
     public ResumeEditor addResume() {
@@ -49,6 +68,10 @@ public class Student extends User {
 
     public String viewJobs() {
         return "";
+    }
+
+    public ArrayList<Resume> getResumes() {
+        return myResumes;
     }
 
     public String getDisplayName() {
@@ -78,5 +101,10 @@ public class Student extends User {
     public String toString() {
         return getID() + "\n" + getContactInfo() + "\n" + getUsername() + "\n"
         + getPass();
+    }
+
+    @Override
+    public boolean checkVerified() {
+        return verified;
     }
 }

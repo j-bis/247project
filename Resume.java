@@ -37,7 +37,7 @@ public class Resume {
     public String printEducation() {
         String ret = "";
         for (Education i : education) {
-            ret += i + "\n";
+            ret += "  -" + i + "\n";
         }
         return ret;
     }
@@ -53,14 +53,14 @@ public class Resume {
     public String printSkills() {
         String ret = "";
         for (String i : skills) {
-            ret += i + "\n";
+            ret += "  -" + i + "\n";
         }
         return ret;
     }
 
     public String toString() {
-        return "Education: \n" + printEducation()
-        + "Experience: \n" + printExperience()
-        + "Skills: \n" + printSkills();
+        return "\nEducation: \n" + printEducation()
+        + "\nExperience: \n" + printExperience()
+        + "\nSkills: \n" + printSkills();
     }
 }

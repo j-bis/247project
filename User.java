@@ -1,13 +1,11 @@
 import java.util.*;
-public class User {
+public abstract class User {
     private String id;
 
     public User() {
-
     }
 
     public void verify() {
-
     }
 
     public ArrayList<String> getResumeView() {
@@ -18,41 +16,27 @@ public class User {
         return null;
     }
 
-    public String getID() {
+    public abstract String getID();
+    
+    public abstract String getType();
+
+    public abstract boolean checkVerified();
+
+    public abstract String getUsername();
+
+    public abstract String getDisplayName();
+
+    public abstract String getPass();
+
+    public String getContactInfo() {
         return null;
     }
 
-    public String getType() {
+    public ArrayList<Resume> getResumes() {
         return null;
     }
 
-
-
-    public void checkVerified() {
-
-    }
-
-    public Object getUsername() {
-        return null;
-    }
-
-    public Object getDisplayName() {
-        return null;
-    }
-
-    public Object getPass() {
-        return null;
-    }
-
-    public Object getContactInfo() {
-        return null;
-    }
-
-    public ArrayList<UUID> getResumesID() {
-        return null;
-    }
-
-    public Object getJobID() {
+    public ArrayList<Job> getJob() {
         return null;
     }
 

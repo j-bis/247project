@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ResumeList {
     private static ResumeList resumeList;
-    private ArrayList<Resume> resume;
+    private static ArrayList<Resume> resume;
 
     private ResumeList() {
         resume = DataLoader.loadResumes();
@@ -14,6 +15,15 @@ public class ResumeList {
         }
 
         return resumeList;
+    }
+
+    public static Resume getResumeByUUID(UUID id) {
+        for (Resume i : resume) {
+            if (i.getID().equals(id.toString())) {
+                return i;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Resume> getResumes() {

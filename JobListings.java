@@ -9,7 +9,6 @@ public class JobListings {
     private ArrayList<Job> searchResults;
 
     private JobListings() {
-        System.out.println("jobs loaded");
         jobs = DataLoader.loadJobs();
     }
 

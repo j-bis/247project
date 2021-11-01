@@ -22,7 +22,7 @@ public class Education {
     }
 
     public String toString() {
-        return "School: " + this.school + "\nDegree: " + this.degree
-        + "\nGPA: " + this.gpa;
+        return "School: " + this.school + "\n   Degree: " + this.degree
+        + "\n   GPA: " + this.gpa;
     }
 }

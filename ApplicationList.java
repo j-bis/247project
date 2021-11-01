@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ApplicationList {
     private static ApplicationList appList;
-    private ArrayList<Application> applicants;
+    private static ArrayList<Application> applicants;
 
     private ApplicationList() {
         applicants = DataLoader.loadApplications();
@@ -16,7 +16,7 @@ public class ApplicationList {
         return appList;
     }
 
-    public ArrayList<Application> getApplicants() {
+    public static ArrayList<Application> getApplicants() {
         return applicants;
     }
 

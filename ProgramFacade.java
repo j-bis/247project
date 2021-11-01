@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class ProgramFacade {
-    //private ResumeList resumeList = ResumeList.getInstance();
-    //private ApplicationList applicationList = ApplicationList.getInstance();
+    private ResumeList resumeList = ResumeList.getInstance();
+    private ApplicationList applicationList = ApplicationList.getInstance();
     private JobListings jobListings = JobListings.getInstance();
-    //private UserList userList = UserList.getInstance();
+    private UserList userList = UserList.getInstance();
     
     private ArrayList<Job> jobArrayList;
     private ArrayList<User> userArrayList;
