@@ -53,8 +53,10 @@ public class Application {
         return ret;
     }
     */
-    public String toString() {
-        return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
+
+  public String toString() {
+     // return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
+     return "";
     }
 
 }
