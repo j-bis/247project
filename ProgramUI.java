@@ -37,11 +37,13 @@ public class ProgramUI {
             
             switch(userCommand) {
                 case(0):
-                    displayLogin();
                     findStudent();
                     break;
                 case(1):
-                    //logout();
+                    findEmployer();
+                    break;
+                case(2):
+                    findAdmin();
                     break;
 
             }
@@ -66,7 +68,7 @@ public class ProgramUI {
     }
 
     private int getUserCommand(int numCommands) {
-        System.out.println("What would you like to do: ");
+        System.out.println("What would you like to do: \n");
 
         String input = scanner.nextLine();
         int command = Integer.parseInt(input) - 1;
@@ -79,9 +81,13 @@ public class ProgramUI {
 
 
     private void findStudent() {
-        System.out.println("\n-----Checking for valid username-----\n");
         programFacade.findStudent(getUserUserName());
-
+    }
+    private void findEmployer() {
+        programFacade.findEmployer(getUserUserName());
+    }
+    private void findAdmin() {
+        programFacade.findAdmin(getUserUserName());
     }
 
     private String getUserUserName() {
