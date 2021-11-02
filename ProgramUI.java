@@ -37,15 +37,17 @@ public class ProgramUI {
             
             switch(userCommand) {
                 case(0):
-                    findStudent();
+                    studentLogin();
+                    // System.out.println(findStudent());
                     break;
                 case(1):
-                    findEmployer();
+                    employerLogin();
                     break;
                 case(2):
-                    findAdmin();
+                    adminLogin();;
                     break;
-
+                default:
+                    break;
             }
 
 
@@ -72,16 +74,54 @@ public class ProgramUI {
 
         String input = scanner.nextLine();
         int command = Integer.parseInt(input) - 1;
-
         if(command >= 0 && command <= numCommands -1) return command;
 
         return -1;
     }
 
+    private void studentLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.studentLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+
+    private void employerLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.employerLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+     
+    private void adminLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.adminLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+    
+
+    private String getField(String prompt) {
+        System.out.println(prompt + ": ");
+        return scanner.nextLine();
+    }
 
 
-    private void findStudent() {
-        programFacade.findStudent(getUserUserName());
+    /*
+    private String findStudent() {
+        return programFacade.findStudent(getUserUserName());
     }
     private void findEmployer() {
         programFacade.findEmployer(getUserUserName());
@@ -94,7 +134,7 @@ public class ProgramUI {
         System.out.println("Enter Username");
 
         while(true) {
-            String username = scanner.nextLine().trim().toLowerCase();
+            String username = scanner.nextLine().trim();
 
             if(!username.contentEquals("")) return username;
 
@@ -104,6 +144,9 @@ public class ProgramUI {
             if(command == "n") return null;
         }
     }
+
+    */
+
     public void displayResumes() {
 
     }

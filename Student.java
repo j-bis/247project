@@ -6,7 +6,7 @@ public class Student extends User {
     private final String type;
     private String id;
     private String displayName;
-    private String username;
+    // private String username;
     private String password;
     private boolean verified = false;
     private String contactInfo;
@@ -40,6 +40,10 @@ public class Student extends User {
         }
         
         return verified;
+    }
+
+    public String whatType() {
+        return "Student";
     }
 
     public ResumeEditor addResume() {

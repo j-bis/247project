@@ -6,6 +6,7 @@ public class ProgramFacade {
     private ResumeList resumeList = ResumeList.getInstance();
     private UserList userList = UserList.getInstance();
     private ApplicationList applicationList = ApplicationList.getInstance();
+    private User currentUser;
 
     private ArrayList<Job> jobArrayList;
     private ArrayList<User> userArrayList;
@@ -42,6 +43,10 @@ public class ProgramFacade {
         */
     }
 
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 
     // loads
     public void loadJobs() {
@@ -101,16 +106,46 @@ public class ProgramFacade {
     }
 
 
-    // finds
-    public void findStudent(String username) {
+    //logins
 
-        if (username == null) return;
+    public boolean studentLogin(String username) {
+        if(!userList.findStudent(username)) return false;
+
+        currentUser = userList.getUser(username);
+        return true;
+    }
+
+    public boolean employerLogin(String username) {
+        if(!userList.findEmployer(username)) return false;
+
+        currentUser = userList.getUser(username);
+        return true;
+    }
+
+    public boolean adminLogin(String username) {
+        if(!userList.findAdmin(username)) return false;
+
+        currentUser = userList.getUser(username);
+        return true;
+    }
+
+    
+
+
+    // finds
+
+    /*
+    public String findStudent(String username) {
+
+        if (username == null) return "null";
 
         if (!userList.findStudent(username)) {
             System.out.println("This user does not exist");
-            return;
+            return "null";
         }
         System.out.println("User Found");
+        return username;
+
     }
 
     public void findEmployer(String username) {
@@ -134,6 +169,8 @@ public class ProgramFacade {
         }
         System.out.println("User Found");
     }
+
+    */
 
     // find student
     //find empl

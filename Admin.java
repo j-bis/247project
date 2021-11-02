@@ -4,7 +4,7 @@ public class Admin extends User{
     private final String type;
     private String id;
     private String displayName;
-    private String username;
+   // private String username;
     private String password;
 
 
@@ -25,6 +25,10 @@ public class Admin extends User{
 
     public String getDisplayName() {
         return this.displayName;
+    }
+
+    public String whatType() {
+        return "Admin";
     }
 
     public String getID() {

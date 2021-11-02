@@ -73,13 +73,26 @@ public class UserList {
         return false;
     }
 
-    public boolean findAdmimn(String username) {
+    public boolean findAdmin(String username) {
         System.out.println(check);
         for (int i=0; i<admins.size(); i++) {
             if (admins.get(i).getUsername().equals(username)) return true;
         }
         return false;
     }
+
+
+    
+    public User getUser(String username) {
+        for(User user : users) {
+            if(user.getUserName().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    
 
     public boolean addUser(String type) {
         if (type.equals("") || !type.equals("0") || 
