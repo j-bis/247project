@@ -13,14 +13,7 @@ public class ProgramFacade {
     private ArrayList<Student> studentArrayList;
     private ArrayList<Application> applicationArrayList;
     private ArrayList<Resume> resumeArrayList;
-
-    /*
-    ArrayList<Job> jobs = loadJobs();
-    ArrayList<Resume> resumes = loadResumes();
-    ArrayList<User> users = loadUsers();
-    ArrayList<Student> students = loadStudents();
-    ArrayList<Application> apps = loadApplications();  
-    */
+    
 
     public static void main(String[] args) {
         ProgramFacade programFacade = new ProgramFacade();
@@ -28,19 +21,7 @@ public class ProgramFacade {
 
 
     public ProgramFacade() {
-        /*
-        loadJobs();
-        loadUsers();
-        loadStudents();
-        loadApplications();
-        loadResumes();
-
-        printJobs();
-        printUsers();
-        printStudents();
-        printApplications();
-        printResumes();
-        */
+        
     }
 
 
@@ -129,53 +110,10 @@ public class ProgramFacade {
         return true;
     }
 
-    
-
-
-    // finds
-
-    /*
-    public String findStudent(String username) {
-
-        if (username == null) return "null";
-
-        if (!userList.findStudent(username)) {
-            System.out.println("This user does not exist");
-            return "null";
-        }
-        System.out.println("User Found");
-        return username;
-
-    }
-
-    public void findEmployer(String username) {
-
-        if (username == null) return;
-
-        if (!userList.findEmployer(username)) {
-            System.out.println("This user does not exist");
-            return;
-        }
-        System.out.println("User Found");
-    }
-
-    public void findAdmin(String username) {
-
-        if (username == null) return;
-
-        if (!userList.findAdmimn(username)) {
-            System.out.println("This user does not exist");
-            return;
-        }
-        System.out.println("User Found");
-    }
-
-    */
-
-    // find student
-    //find empl
-    // find admin
-
+   public boolean verifyPassword(String password) {
+       if(currentUser.getPass().equals(password)) return true;
+       return false;
+   }
 
     public Job findJob() {
         return new Job();
