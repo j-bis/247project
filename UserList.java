@@ -4,10 +4,17 @@ public class UserList {
     private static UserList userList;
     private static ArrayList<User> users;
     private static ArrayList<Student> students;
+    private static ArrayList<Employer> employers;
+    private static ArrayList<Admin> admins;
+    private static String check = "\n-----Checking for valid username-----\n";
+
+
 
     private UserList() {
         users = DataLoader.loadUsers();
         students = DataLoader.loadStudents();
+        employers = DataLoader.loadEmployers();
+        admins = DataLoader.loadAdmins();
     }
     
     public static UserList getInstance() {
@@ -51,11 +58,41 @@ public class UserList {
     */
 
     public boolean findStudent(String username) {
+        System.out.println(check);
         for (int i=0; i<students.size(); i++) {
             if (students.get(i).getUsername().equals(username)) return true;
         }
         return false;
     }
+
+    public boolean findEmployer(String username) {
+        System.out.println(check);
+        for (int i=0; i<employers.size(); i++) {
+            if (employers.get(i).getUsername().equals(username)) return true;
+        }
+        return false;
+    }
+
+    public boolean findAdmin(String username) {
+        System.out.println(check);
+        for (int i=0; i<admins.size(); i++) {
+            if (admins.get(i).getUsername().equals(username)) return true;
+        }
+        return false;
+    }
+
+
+    
+    public User getUser(String username) {
+        for(User user : users) {
+            if(user.getUserName().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    
 
     public boolean addUser(String type) {
         if (type.equals("") || !type.equals("0") || 
@@ -65,6 +102,14 @@ public class UserList {
 
         users.add(UserFactory.createUser(type));
         return true;
+    }
+
+    public static void main(String[] args) {
+        UserList userlist = new UserList();
+
+        userlist.addUser("2");
+        userlist.saveUserList();
+
     }
 
     public void saveUserList() {

@@ -37,12 +37,17 @@ public class ProgramUI {
             
             switch(userCommand) {
                 case(0):
-                    findUser();
+                    studentLogin();
+                    // System.out.println(findStudent());
                     break;
                 case(1):
-                    //logout();
+                    employerLogin();
                     break;
-
+                case(2):
+                    adminLogin();;
+                    break;
+                default:
+                    break;
             }
 
 
@@ -62,40 +67,72 @@ public class ProgramUI {
     }
 
     private int getUserCommand(int numCommands) {
-        System.out.println("What would you like to do: ");
+        System.out.println("What would you like to do: \n");
 
         String input = scanner.nextLine();
         int command = Integer.parseInt(input) - 1;
-
         if(command >= 0 && command <= numCommands -1) return command;
 
         return -1;
     }
 
 
+    // LOGINS
+    private void studentLogin() {
+        String userName = getField("Username" );
 
-    private void findUser() {
-        programFacade.findStudent(getUserUserName());
-
-    }
-
-    private String getUserUserName() {
-        System.out.println("Enter Username");
-        System.out.println("-----Checking for valid username-----\n");
-
-        while(true) {
-            String username = scanner.nextLine().trim().toLowerCase();
-
-            if(!username.contentEquals("")) return username;
-
-            System.out.println("You may not leave this blank");
-            System.out.println("Would you like to enter username again (y) or return to main menu (n): ");
-            String command = scanner.nextLine().trim().toLowerCase();
-            if(command.equals("n")) break;
-            System.out.println(command);
+        if (programFacade.studentLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
+            verifyPassword(currentUser);
+        } else {
+            System.out.println("Sorry, invalid username ");
         }
-        return "-exit-";
     }
+
+    private void employerLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.employerLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+            verifyPassword(currentUser);
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+     
+    private void adminLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.adminLogin(userName)) {
+            User currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+            verifyPassword(currentUser);
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+    
+
+    // HELPER METHODS
+    private void verifyPassword(User currentUser) {
+        
+        String password = getField("Password");
+        if (programFacade.verifyPassword(password)) {
+            System.out.println("Welcome " + currentUser.getDisplayName());
+        } else {
+            System.out.println("Sorry, invalid password ");
+            }
+    }
+
+    private String getField(String prompt) {
+        System.out.println(prompt + ": ");
+        return scanner.nextLine();
+    }
+
+
+
     public void displayResumes() {
 
     }

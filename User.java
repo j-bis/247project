@@ -1,6 +1,8 @@
 import java.util.*;
 public abstract class User {
     private String id;
+    protected String username;
+
 
     public User() {
     }
@@ -20,6 +22,8 @@ public abstract class User {
     
     public abstract String getType();
 
+    public abstract String whatType();
+
     public abstract boolean checkVerified();
 
     public abstract String getUsername();
@@ -27,6 +31,10 @@ public abstract class User {
     public abstract String getDisplayName();
 
     public abstract String getPass();
+
+    public String getUserName() {
+        return this.username;
+    }
 
     public String getContactInfo() {
         return null;
