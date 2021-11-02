@@ -57,7 +57,6 @@ public class ProgramUI {
 
     }
 
-
     private void displayMainMenu() {
         System.out.println("\n***** Main Menu*****\n");
         for(int i=0; i<mainMenuOptions.length; i++) {
@@ -95,7 +94,7 @@ public class ProgramUI {
 
         if (programFacade.employerLogin(userName)) {
             User currentUser = programFacade.getCurrentUser();
-            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
             verifyPassword(currentUser);
         } else {
             System.out.println("Sorry, invalid username ");
@@ -107,7 +106,7 @@ public class ProgramUI {
 
         if (programFacade.adminLogin(userName)) {
             User currentUser = programFacade.getCurrentUser();
-            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.\nPlease enter password");
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
             verifyPassword(currentUser);
         } else {
             System.out.println("Sorry, invalid username ");
@@ -126,11 +125,12 @@ public class ProgramUI {
             }
     }
 
+    
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
     }
-
+    
 
 
     public void displayResumes() {

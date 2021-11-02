@@ -17,6 +17,7 @@ public class ProgramFacade {
 
     public static void main(String[] args) {
         ProgramFacade programFacade = new ProgramFacade();
+        programFacade.addResume();
     }
 
 
@@ -29,7 +30,13 @@ public class ProgramFacade {
         return currentUser;
     }
 
+    public void addResume() {
+        resumeArrayList.add(new Resume().addResume());
+    }
+
     // loads
+    
+    /*
     public void loadJobs() {
         jobArrayList = DataLoader.loadJobs();
     }
@@ -49,6 +56,7 @@ public class ProgramFacade {
     public void loadResumes() {
         resumeArrayList = DataLoader.loadResumes();
     }
+    */
 
     // prints
     public void printJobs() {
@@ -85,6 +93,7 @@ public class ProgramFacade {
             System.out.println(i + "\n");
         }
     }
+    
 
 
     //logins
@@ -109,6 +118,7 @@ public class ProgramFacade {
         currentUser = userList.getUser(username);
         return true;
     }
+
 
    public boolean verifyPassword(String password) {
        if(currentUser.getPass().equals(password)) return true;

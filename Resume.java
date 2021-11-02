@@ -1,19 +1,39 @@
 import java.util.*;
 public class Resume {
+    private Scanner scanner;
     private String id;
     private String title;
-    private ArrayList<Experience> experience;
-    private ArrayList<Education> education;
-    private ArrayList<String> skills;
+    private ArrayList<Experience> experienceArrayList;
+    private ArrayList<Education> educationArrayList;
+    private ArrayList<String> skillsArrayList;
 
     public Resume(String id, String title, ArrayList<Experience> experience, ArrayList<Education> education, ArrayList<String> skills) {
         this.id = id;
         this.title = title;
-        this.education = education;
-        this.experience = experience;
-        this.skills = skills;
+        this.educationArrayList = education;
+        this.experienceArrayList = experience;
+        this.skillsArrayList = skills;
     }
 
+    public Resume() {
+        scanner = new Scanner(System.in);
+    }
+
+    public Resume addResume() {
+        Resume thisResume = new Resume();
+        this.setTitle(getField("Resume ID"));
+        this.setEducation(new Education().addEducation());
+        this.setExperience(new Experience().addExperience());
+        this.setSkills(getField("Skills"));
+        return thisResume;
+    }
+
+    public static void main(String[] args) {
+        Resume res = new Resume();
+
+    }
+
+    // Getters
     public String getTitle() {
         return this.title;
     }
@@ -23,20 +43,78 @@ public class Resume {
     }
 
     public ArrayList<Experience> getExperience() {
-        return experience;
+        return experienceArrayList;
     }
 
     public ArrayList<Education> getEducation() {
-        return education;
+        return educationArrayList;
     }
 
     public ArrayList<String> getSkills() {
-        return skills;
+        return skillsArrayList;
     }
 
+
+    // setters
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
+    /*
+    public void addExperience(Experience experience) {
+        this.experienceArrayList.add(experience);
+    }
+
+    public void addEducation(Education education) {
+        this.educationArrayList.add(education);
+    }
+
+    */
+
+
+    /*
+    public void addExperience(String title, String duties, String company) {
+        Experience newExperience = new Experience(title, duties, company);
+        experience.add(newExperience);
+    }
+    */
+
+
+    public void setEducation(Education education) {
+        educationArrayList.add(new Education());
+    }  // new education to see if still Null
+
+    public void setExperience(Experience experience) {
+        experienceArrayList.add(experience);
+
+    }
+
+    public void setSkills(String skills) {
+        skillsArrayList.add(skills);
+    }
+
+
+    /*
+    public void addEducation(Education education) {
+        this.education = new Education(education);
+    }
+    */
+
+
+    //helper methods
+    
+    private String getField(String prompt) {
+        System.out.println(prompt + ": ");
+        return scanner.nextLine();
+    }
+
+
+
+    // printers
     public String printEducation() {
         String ret = "";
-        for (Education i : education) {
+        for (Education i : educationArrayList) {
             ret += "  -" + i + "\n";
         }
         return ret;
@@ -44,7 +122,7 @@ public class Resume {
 
     public String printExperience() {
         String ret = "";
-        for (Experience i : experience) {
+        for (Experience i : experienceArrayList) {
             ret += i + "\n";
         }
         return ret;
@@ -52,7 +130,7 @@ public class Resume {
 
     public String printSkills() {
         String ret = "";
-        for (String i : skills) {
+        for (String i : skillsArrayList) {
             ret += "  -" + i + "\n";
         }
         return ret;
