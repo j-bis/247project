@@ -6,6 +6,8 @@ public class Resume {
     private ArrayList<Experience> experienceArrayList;
     private ArrayList<Education> educationArrayList;
     private ArrayList<String> skillsArrayList;
+    private ResumeList resumeList = ResumeList.getInstance();
+
 
     public Resume(String id, String title, ArrayList<Experience> experience, ArrayList<Education> education, ArrayList<String> skills) {
         this.id = id;
