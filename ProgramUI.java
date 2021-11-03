@@ -10,7 +10,7 @@ public class ProgramUI {
     private static String check = "\n-----Checking for valid username-----\n";
     private static String[] userType = {"student", "employer"};
     private User currentUser;
-    private ArrayList<Resume> resumes;
+    private static ArrayList<Resume> resumes;
     private ArrayList<Job> jobs;
     private JobListings jobListings = JobListings.getInstance();
 
@@ -42,8 +42,10 @@ public class ProgramUI {
             }
 
             //check to logout
-            if(userCommand == mainMenuOptions.length - 1) break;
-
+            if(userCommand == mainMenuOptions.length - 1) {
+                DataWriter.save();
+                break;
+            }
             
             switch(userCommand) {
                 case(0):
@@ -62,9 +64,10 @@ public class ProgramUI {
                 default:
                     break;
             }
-
+            DataWriter.save();
             break;
         }
+        
 
     }
 
@@ -123,6 +126,71 @@ public class ProgramUI {
         }
     }
 
+    private void employerLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.employerLogin(userName)) {
+            currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
+            verifyPassword(currentUser);
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+
+    private void adminLogin() {
+        String userName = getField("Username");
+
+        if (programFacade.adminLogin(userName)) {
+            currentUser = programFacade.getCurrentUser();
+            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
+            verifyPassword(currentUser);
+        } else {
+            System.out.println("Sorry, invalid username ");
+        }
+    }
+
+    /**
+     * @param currentUser
+     */
+
+    private void verifyPassword(User currentUser) {
+
+        String password = getField("Password");
+        if (programFacade.verifyPassword(password)) {
+            System.out.println("Welcome " + currentUser.getDisplayName());
+
+        } else {
+            System.out.println("Sorry, invalid password ");
+        }
+    }
+
+    public void displayResumes(User currentUser) {
+    }
+
+    /**
+     * @param prompt
+     * @return String getField
+     */
+    private String getField(String prompt) {
+        System.out.println(prompt + ": ");
+        return scanner.nextLine();
+    }
+
+    public void displayJobListings() {
+
+    }
+
+    public void displayApplicants() {
+
+    }
+
+    public void displayUsers() {
+
+    }
+
+    // MENUS
+
     private void studentMenu() {
         boolean loggedin = true;
         while (loggedin) {
@@ -145,7 +213,6 @@ public class ProgramUI {
                 System.out.println("\nWould you like to print this resume to a txt file?");
                 System.out.println("1. Yes\n2. No");
                 if (getUserCommand(2) == 0) {
-                    System.out.println("TEST");
                     DataWriter.writeResumeToTxtFile(currentUser, choice);
                     System.out.println("Printed to Resume.txt");
                 }
@@ -182,6 +249,10 @@ public class ProgramUI {
         }
     }
 
+    private void employeeMenu() {
+        //stuff
+    }
+
     private void createResume() {
         String resumeTitle = getField("Enter Resume title");
         ArrayList<Experience> experiences = new ArrayList<Experience>();
@@ -190,12 +261,23 @@ public class ProgramUI {
 
         while (true) {
             Experience thisExperience = new Experience();
-            thisExperience.setTitle(getField("Title"));
-            thisExperience.setDuties(getField("Duties"));
+            System.out.println("Input your past Experience: ");
+            thisExperience.setTitle(getField("Experience Title"));
             thisExperience.setCompany(getField("Company"));
+            thisExperience.setType(getField("Job Type"));
+            String start = getField("Month and Year you started work");
+            String end = getField("Month and Year you stopped work");
+            thisExperience.setDate(start, end);
+            while(true) {
+                thisExperience.setDuties(getField("Duties"));
+                String moreD = getField("Do you have any more duties? (Y/N)");
+                if (moreD.equalsIgnoreCase("n")) break;
+            }
+            
+            
             experiences.add(thisExperience);
-            String moreExp = getField("Do you have more experience");
-            if (moreExp.equalsIgnoreCase("no")) break;
+            String moreExp = getField("Do you have more experience (Y/N)");
+            if (moreExp.equalsIgnoreCase("n")) break;
         }
 
         while (true) {
@@ -203,88 +285,28 @@ public class ProgramUI {
             System.out.println("Education Field: ");
             thisEducation.setSchool(getField("School"));
             thisEducation.setDegree(getField("Degree"));
-            thisEducation.setgpa(getField("gpa"));
+            thisEducation.setgpa(getField("Expected Graduation"));
             educations.add(thisEducation);
-            String moreEdu = getField("Do you have more education");
-            if (moreEdu.equalsIgnoreCase("no")) break;
+            String moreEdu = getField("Do you have more education (Y/N)");
+            if (moreEdu.equalsIgnoreCase("n")) break;
         }
 
     
         while (true) {
             String skill = getField("Enter Skills");
             skills.add(skill);
-            String moreSkill = getField("Do you have more skills");
-            if (moreSkill.equalsIgnoreCase("no")) break;
+            String moreSkill = getField("Do you have more skills (Y/N)");
+            if (moreSkill.equalsIgnoreCase("n")) break;
         }
 
         ResumeEditor.newResume(resumeTitle, experiences, educations, skills);
-
+        resumes.add(new Resume(resumeTitle, experiences, educations, skills));
+        for (int i=0;i<educations.size();i++) {
+        System.out.println(educations.get(i));
+        }
+        System.out.println(new Resume(resumeTitle, experiences, educations, skills));
         
     }
 
-    private void employerLogin() {
-        String userName = getField("Username");
-
-        if (programFacade.employerLogin(userName)) {
-            currentUser = programFacade.getCurrentUser();
-            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
-            verifyPassword(currentUser);
-        } else {
-            System.out.println("Sorry, invalid username ");
-        }
-    }
-
-    private void adminLogin() {
-        String userName = getField("Username");
-
-        if (programFacade.adminLogin(userName)) {
-            currentUser = programFacade.getCurrentUser();
-            System.out.println(currentUser.whatType() + " User: " + currentUser.getDisplayName() + " found.");
-            verifyPassword(currentUser);
-        } else {
-            System.out.println("Sorry, invalid username ");
-        }
-    }
-
-    /**
-     * @param currentUser
-     */
-
-    private void verifyPassword(User currentUser) {
-
-        String password = getField("Password");
-        if (programFacade.verifyPassword(password)) {
-            System.out.println("Welcome " + currentUser.getDisplayName());
-            System.out.println("Resume " + currentUser.getResumes());
-
-        } else {
-            System.out.println("Sorry, invalid password ");
-        }
-    }
-
-    public void displayResumes(User currentUser) {
-        System.out.println("Resume " + currentUser.getResumes());
-    }
-
-    /**
-     * @param prompt
-     * @return String getField
-     */
-    private String getField(String prompt) {
-        System.out.println(prompt + ": ");
-        return scanner.nextLine();
-    }
-
-    public void displayJobListings() {
-
-    }
-
-    public void displayApplicants() {
-
-    }
-
-    public void displayUsers() {
-
-    }
 
 }

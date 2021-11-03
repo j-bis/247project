@@ -232,9 +232,16 @@ public class DataLoader {
                 for (int j = 0; j < experiences.size(); j++) {
                     JSONObject experience = (JSONObject) experiences.get(j);
                     String ExperienceTitle = (String) experience.get("title");
-                    String duties = (String) experience.get("duties");
+                    
+                    JSONArray duties = (JSONArray) experience.get("duties");
+                    ArrayList<String> dutiesAL = new ArrayList<String>();
+                    for (int k = 0; k < duties.size(); k++) {
+                        dutiesAL.add((String) duties.get(k));
+                    }
                     String company = (String) experience.get("company");
-                    experienceArray.add(new Experience(ExperienceTitle, duties, company));
+                    String type = (String)experience.get("type");
+                    String date = (String)experience.get("date");
+                    experienceArray.add(new Experience(ExperienceTitle, dutiesAL, company, type, date));
                 }
 
                 JSONArray skills = (JSONArray) personJSON.get("skills");

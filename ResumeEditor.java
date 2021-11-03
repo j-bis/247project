@@ -5,8 +5,6 @@ public class ResumeEditor {
     private Resume resume;
     private static ResumeList resumeList = ResumeList.getInstance();
 
-    public ResumeEditor() {
-    }
 
     /**
      * @param id

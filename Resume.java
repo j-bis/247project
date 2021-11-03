@@ -19,11 +19,14 @@ public class Resume {
 
     public Resume(String title, ArrayList<Experience> experience, ArrayList<Education> education, ArrayList<String> skills) {
         id = UUID.randomUUID().toString();
-
+        this.title = title;
+        this.educationArrayList = education;
+        this.experienceArrayList = experience;
+        this.skillsArrayList = skills;
     }
 
     public Resume() {
-
+        id = UUID.randomUUID().toString();
     }
 
     /**
@@ -31,10 +34,10 @@ public class Resume {
      */
     public Resume addResume() {
         Resume thisResume = new Resume();
-        this.setTitle(getField("Resume ID"));
-        this.setEducation(new Education().addEducation());
-        this.setExperience(new Experience().addExperience());
-        this.setSkills(getField("Skills"));
+        thisResume.setTitle(getField("Resume Title"));
+        thisResume.setEducation(new Education().addEducation());
+        thisResume.setExperience(new Experience().addExperience());
+        thisResume.setSkills(getField("Skills"));
         return thisResume;
     }
 
@@ -165,7 +168,7 @@ public class Resume {
     }
 
     public String toString() {
-        return "\nEducation: \n" + printEducation() + "\nExperience: \n" + printExperience() + "\nSkills: \n"
+        return "\nEducation: \n" + printEducation() + "\nExperience: \n" + printExperience() + "Skills: \n"
                 + printSkills();
     }
 }

@@ -87,6 +87,6 @@ public class Education {
      * @return String toString
      */
     public String toString() {
-        return "School: " + this.school + "\n   Degree: " + this.degree + "\n   GPA: " + this.gpa;
+        return "School: " + this.school + "\n  -Degree: " + this.degree + "\n  -Expected Graduation Date: " + this.gpa;
     }
 }

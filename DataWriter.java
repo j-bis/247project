@@ -114,8 +114,16 @@ public class DataWriter {
             Experience exp = expArray.get(i);
             JSONObject expObject = new JSONObject();
             expObject.put("title", exp.getTitle());
-            expObject.put("duties", exp.getDuties());
+
+            JSONArray dutJsonArray = new JSONArray();
+            ArrayList<String> duties = exp.getDutiesList();
+            for (int j=0; j < duties.size(); j++) {
+                dutJsonArray.add(duties.get(j));
+            }
+            expObject.put("duties", dutJsonArray);
             expObject.put("company", exp.getCompany());
+            expObject.put("type", exp.getType());
+            expObject.put("date", exp.getDate());
 
             expJSONArray.add(expObject);
         }

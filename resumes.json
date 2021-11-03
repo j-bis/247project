@@ -6,19 +6,28 @@
       {
         "school": "University of North Dakota",
         "degree": "A.S. in Computer Science",
-        "gpa": "3.4"
+        "gpa": "2023"
       }
     ],
     "experience": [
       {
         "title": "Fry Cook",
-        "duties": "Assured proper production of food to be fit for consumption.",
-        "company": "McDonalds"
+        "duties": [
+          "Assured proper production of food to be fit for consumption.",
+          "Assembled orders on an assembly line in cooperation with others"
+        ],
+        "company": "McDonalds",
+        "type": "Part-Time",
+        "date": "August 2018 - June 2019"
       },
       {
         "title": "Cashier",
-        "duties": "Mediated the exchange of goods and services.",
-        "company": "Walmart"
+        "duties": [
+        "Mediated the exchange of goods and services."
+        ],
+        "company": "Walmart",
+        "type": "Part-Time",
+        "date": "July 2019 - February 2020"
       }
     ],
     "skills": ["Experienced in Java", "Proficient in Python"]
@@ -30,14 +39,18 @@
       {
         "school": "University of Georgia",
         "degree": "B.S. in Computer Engineering",
-        "gpa": "3.6"
+        "gpa": "2022"
       }
     ],
     "experience": [
       {
-        "title": "none",
-        "duties": "",
-        "company": ""
+        "title": "Test Engineer",
+        "duties": [
+          "Execute test cases to test features and report failures to engineering"
+        ],
+        "company": "Google",
+        "type": "Internship",
+        "date": "January 2020 - June 2020"
       }
     ],
     "skills": [
