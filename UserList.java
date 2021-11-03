@@ -85,7 +85,7 @@ public class UserList {
     
     public User getUser(String username) {
         for(User user : users) {
-            if(user.getUserName().equals(username)) {
+            if(user.getUsername().equals(username)) {
                 return user;
             }
         }
