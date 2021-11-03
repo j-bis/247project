@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Admin extends User{
     private final String type;
@@ -10,6 +11,7 @@ public class Admin extends User{
 
     public Admin() {
         type = "2";
+        id = UUID.randomUUID().toString();
     }
 
     public Admin(String id, String displayName, String username, String password) {

@@ -32,4 +32,13 @@ public class ApplicationList {
     public void saveApplicants() {
         DataWriter.saveApplications();
     }
+
+    public static void addApplicant(String jobID, String studentID, String resumeID) {
+        for (Application a : applicants) {
+            if (jobID.equals(a.getID())) {
+                a.applicants.add(studentID);
+                a.resumes.add(resumeID);
+            }
+        }
+    } 
 }

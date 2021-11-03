@@ -5,8 +5,8 @@ import javax.xml.crypto.Data;
 public class Application {
     private String id;
     private String jobListingID;
-    private ArrayList<Student> applicants;
-    private ArrayList<Resume> resumes;
+    private static ArrayList<Student> applicants;
+    private static ArrayList<Resume> resumes;
 
     public Application(String id, String jobListingID, ArrayList<Student> applicants, ArrayList<Resume> resumes) {
         this.id = id;

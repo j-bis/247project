@@ -6,9 +6,6 @@ public class UserList {
     private static ArrayList<Student> students;
     private static ArrayList<Employer> employers;
     private static ArrayList<Admin> admins;
-    private static String check = "\n-----Checking for valid username-----\n";
-
-
 
     private UserList() {
         users = DataLoader.loadUsers();
@@ -58,7 +55,6 @@ public class UserList {
     */
 
     public boolean findStudent(String username) {
-        System.out.println(check);
         for (int i=0; i<students.size(); i++) {
             if (students.get(i).getUsername().equals(username)) return true;
         }
@@ -92,11 +88,9 @@ public class UserList {
         return null;
     }
 
-    
 
     public boolean addUser(String type) {
-        if (type.equals("") || !type.equals("0") || 
-            !type.equals("1") || !type.equals("2")) {
+        if (!type.equals("student") || !type.equals("employer") || type.equals("")) {
                 return false;
             }
 

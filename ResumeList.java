@@ -26,8 +26,8 @@ public class ResumeList {
         return null;
     }
 
-    public void addResume(Resume aresume) {
-        resume.add(aresume);
+    public void addResume(Resume aResume) {
+        resume.add(aResume);
         //DataWriter.saveResume();
     }
     

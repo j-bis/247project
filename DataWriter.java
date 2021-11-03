@@ -211,7 +211,7 @@ public class DataWriter {
      * @param student
      * @param idxResume
      */
-    public static void writeResumeToTxtFile(Student student, int idxResume) {
+    public static void writeResumeToTxtFile(User student, int idxResume) {
         ArrayList<Resume> stuResumes = student.getResumes();
         try (FileWriter file = new FileWriter("Resume.txt")) {
             file.write(student.getContactInfo());
@@ -221,6 +221,13 @@ public class DataWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public static void save() {
+        saveApplications();
+        saveJobs();
+        saveUsers();
+        saveResume();
     }
 
     /**

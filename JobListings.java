@@ -5,11 +5,11 @@ import javax.xml.crypto.Data;
 
 public class JobListings {
     private static JobListings jobListing;
-    private static ArrayList<Job> jobs;
-    private ArrayList<Job> searchResults;
+    private static ArrayList<Job> jobsArrayList;
+    //private ArrayList<Job> searchResults;
 
     private JobListings() {
-        jobs = DataLoader.loadJobs();
+        jobsArrayList = DataLoader.loadJobs();
     }
 
     public static JobListings getInstance() {
@@ -24,8 +24,19 @@ public class JobListings {
 
     }
 
+
     public ArrayList<Job> search(String employer) {
         return new ArrayList<Job>();
+    }
+
+    public static ArrayList<Job> searchBySkills(String skill) {
+        ArrayList<Job> searchResults = new ArrayList<Job>();
+        for (Job jobs : jobsArrayList) {
+            if (jobs.getSkillsArrayList().contains(skill.toLowerCase().trim())) {
+                searchResults.add(jobs);
+            }
+        }
+        return searchResults;
     }
 
     public String displayJobs() {
@@ -33,7 +44,7 @@ public class JobListings {
     }
 
     public ArrayList<Job> getJobs() {
-        return jobs;
+        return jobsArrayList;
     }
 
     public Job getUUID() {
@@ -45,7 +56,7 @@ public class JobListings {
     }
 
     public static Job getJobByUUID(UUID id) {
-        for (Job i : jobs) {
+        for (Job i : jobsArrayList) {
             if (i.getID().equals(id.toString())) {
                 return i;
             }

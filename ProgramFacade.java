@@ -31,7 +31,8 @@ public class ProgramFacade {
     }
 
     public void addResume() {
-        resumeArrayList.add(new Resume().addResume());
+        //resumeArrayList.add(new Resume().addResume());
+        resumeList.addResume(new Resume().addResume());
     }
 
     // loads
@@ -97,6 +98,10 @@ public class ProgramFacade {
 
 
     //logins
+
+    public boolean createAccount(String type) {
+        return userList.addUser(type);
+    }
 
     public boolean studentLogin(String username) {
         if(!userList.findStudent(username)) return false;

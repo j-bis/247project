@@ -3,6 +3,7 @@ public class Education {
     private String school;
     private String degree; 
     private String gpa;
+    private Scanner scanner;
 
     public Education(String school, String degree, String gpa) {
         this.school = school; 
