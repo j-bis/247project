@@ -1,11 +1,12 @@
 import java.util.*;
+
 public class Education {
     private String school;
-    private String degree; 
+    private String degree;
     private String gpa;
 
     public Education(String school, String degree, String gpa) {
-        this.school = school; 
+        this.school = school;
         this.degree = degree;
         this.gpa = gpa;
     }
@@ -14,6 +15,9 @@ public class Education {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * @return Education
+     */
     public Education addEducation() {
         Education thisEducation = new Education();
         System.out.println("Education Field: ");
@@ -23,42 +27,65 @@ public class Education {
         return thisEducation;
     }
 
-    //setters
+    /**
+     * @param school
+     */
+
     public void setSchool(String school) {
         this.school = school;
     }
 
+    /**
+     * @param degree
+     */
     public void setDegree(String degree) {
         this.degree = degree;
     }
 
+    /**
+     * @param gpa
+     */
     public void setgpa(String gpa) {
         this.gpa = gpa;
     }
 
+    /**
+     * @param getDegree
+     * @return String
+     */
 
-
-    // getters
-    public String getSchool() { //Method to return school
-        return school;            
+    public String getSchool() {
+        return school;
     }
 
-    public String getDegree() { 
+    /**
+     * @return String getDegree
+     */
+    public String getDegree() {
         return degree;
     }
 
+    /**
+     * @return String
+     */
     public String getGpa() {
         return gpa;
     }
 
-    //HELPER METHODS
+    /**
+     * @param prompt
+     * @return String getField
+     */
+
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
     }
 
+    /**
+     * @return String toString
+     */
     public String toString() {
-        return "School: " + this.school + "\n   Degree: " + this.degree
-        + "\n   GPA: " + this.gpa;
+        return "School: " + this.school + "\n   Degree: " + this.degree + "\n   GPA: " + this.gpa;
     }
 }
