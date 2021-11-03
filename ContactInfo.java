@@ -4,6 +4,6 @@ public class ContactInfo {
     }
 
     public void customize() {
-        
-    } // Method to customize Contact Information. 
+
+    }
 }

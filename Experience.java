@@ -1,9 +1,9 @@
 import java.util.*;
 
- class Experience {
+class Experience {
     private Scanner scanner;
     private String title;
-    private String duties; 
+    private String duties;
     private String company;
 
     public Experience(String title, String duties, String company) {
@@ -11,10 +11,14 @@ import java.util.*;
         this.duties = duties;
         this.company = company;
     }
+
     public Experience() {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * @return Experience
+     */
     public Experience addExperience() {
         Experience thisExperience = new Experience();
         thisExperience.setTitle(getField("Title"));
@@ -23,57 +27,65 @@ import java.util.*;
         return thisExperience;
     }
 
-    // SETTERS
+    /**
+     * @param title
+     */
+
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @param duties
+     */
     public void setDuties(String duties) {
         this.duties = duties;
     }
 
+    /**
+     * @param company
+     */
     public void setCompany(String company) {
         this.company = company;
     }
 
+    /**
+     * @param prompt
+     * @return String getField
+     */
 
-
-
-    // HELPERS
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
     }
 
-
-
-
+    /**
+     * @return String toString
+     */
     public String toString() {
-        return "  -Job title: " + this.title + "\n   Job description: " + this.duties
-        + "\n   Previous Employer: " + this.company;
+        return "  -Job title: " + this.title + "\n   Job description: " + this.duties + "\n   Previous Employer: "
+                + this.company;
     }
 
     /**
-     * @return String return the title
+     * @return String getTitle
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * @return String return the duties
+     * @return String getDuties
      */
     public String getDuties() {
         return duties;
     }
 
-
     /**
-     * @return String return the company
+     * @return String getCompany
      */
     public String getCompany() {
         return company;
     }
-
 
 }

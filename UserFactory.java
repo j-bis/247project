@@ -1,5 +1,10 @@
 
 public class UserFactory {
+
+    /**
+     * @param type
+     * @return User
+     */
     public static User createUser(String type) {
         if (type.equalsIgnoreCase("student")) {
             return new Student();

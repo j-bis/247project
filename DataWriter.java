@@ -239,6 +239,9 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         saveJobs();
         saveUsers();
