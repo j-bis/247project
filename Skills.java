@@ -11,6 +11,10 @@ public class Skills {
         return skills;
     }
 
+    public void addSkill(String skill) {
+        this.skills.add(skill);
+    }
+
     public String toString() {
         return "";
     }

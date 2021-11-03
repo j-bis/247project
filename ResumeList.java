@@ -26,6 +26,11 @@ public class ResumeList {
         return null;
     }
 
+    public void addResume(Resume aresume) {
+        resume.add(aresume);
+        //DataWriter.saveResume();
+    }
+    
     public ArrayList<Resume> getResumes() {
         return resume;
     }
