@@ -125,9 +125,15 @@ public class ProgramUI {
         String password = getField("Password");
         if (programFacade.verifyPassword(password)) {
             System.out.println("Welcome " + currentUser.getDisplayName());
+            System.out.println("Resume " + currentUser.getResumes());
+
         } else {
             System.out.println("Sorry, invalid password ");
         }
+    }
+
+    public void displayResumes(User currentUser) {
+        System.out.println("Resume " + currentUser.getResumes());
     }
 
     /**
@@ -137,10 +143,6 @@ public class ProgramUI {
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
-    }
-
-    public void displayResumes() {
-
     }
 
     public void displayJobListings() {
