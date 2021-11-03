@@ -6,7 +6,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class DataWriter {
-    
+
     public static void saveUsers() {
         ResumeList resumeList = ResumeList.getInstance();
         UserList userList = UserList.getInstance();
@@ -24,7 +24,7 @@ public class DataWriter {
         JobListings jobListing = JobListings.getInstance();
         ArrayList<Job> jobs = jobListing.getJobs();
         JSONArray jsonJobs = new JSONArray();
-        
+
         for (int i = 0; i < jobs.size(); i++) {
             jsonJobs.add(getJobJSON(jobs.get(i)));
         }
@@ -59,11 +59,15 @@ public class DataWriter {
         writeJsonToFile("applicationTest.json", jsonApplicants);
     }
 
+    /**
+     * @param resume
+     * @return JSONObject
+     */
     public static JSONObject getResumeJSON(Resume resume) {
         JSONObject resumeDetails = new JSONObject();
         resumeDetails.put("itemId", resume.getID());
         resumeDetails.put("title", resume.getTitle());
-        
+
         JSONArray eduJSONArray = new JSONArray();
         ArrayList<Education> eduArray = resume.getEducation();
         for (int i = 0; i < eduArray.size(); i++) {
@@ -74,7 +78,7 @@ public class DataWriter {
             eduObject.put("gpa", edu.getGpa());
 
             eduJSONArray.add(eduObject);
-        }     
+        }
         resumeDetails.put("education", eduJSONArray);
 
         JSONArray expJSONArray = new JSONArray();
@@ -90,7 +94,6 @@ public class DataWriter {
         }
         resumeDetails.put("experience", expJSONArray);
 
-
         JSONArray skillsJsonArray = new JSONArray();
         ArrayList<String> skillsArray = resume.getSkills();
         for (int i = 0; i < skillsArray.size(); i++) {
@@ -98,14 +101,18 @@ public class DataWriter {
         }
         resumeDetails.put("skills", skillsJsonArray);
 
-        return resumeDetails;    
+        return resumeDetails;
     }
 
+    /**
+     * @param application
+     * @return JSONObject
+     */
     public static JSONObject getApplicantsJSON(Application application) {
         JSONObject applicantDetails = new JSONObject();
         applicantDetails.put("id", application.getID());
         applicantDetails.put("jobListing", application.getjobID());
-        
+
         JSONArray appJSONArray = new JSONArray();
         ArrayList<Student> applicant = application.getApplicants();
         ArrayList<Resume> appResume = application.getResumes();
@@ -121,13 +128,17 @@ public class DataWriter {
         return applicantDetails;
     }
 
+    /**
+     * @param user
+     * @return JSONObject
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put("id", user.getID());
         userDetails.put("type", user.getType());
-		userDetails.put("displayName", user.getDisplayName());
-		userDetails.put("username", user.getUsername());
-		userDetails.put("password", user.getPass());
+        userDetails.put("displayName", user.getDisplayName());
+        userDetails.put("username", user.getUsername());
+        userDetails.put("password", user.getPass());
 
         if (user.getType().equals("0")) {
             userDetails.put("contactInfo", user.getContactInfo());
@@ -153,6 +164,10 @@ public class DataWriter {
         return userDetails;
     }
 
+    /**
+     * @param job
+     * @return JSONObject
+     */
     public static JSONObject getJobJSON(Job job) {
         JSONObject jobDetails = new JSONObject();
         jobDetails.put("id", job.getID());
@@ -161,6 +176,10 @@ public class DataWriter {
         return jobDetails;
     }
 
+    /**
+     * @param student
+     * @param idxResume
+     */
     public static void writeResumeToTxtFile(Student student, int idxResume) {
         ArrayList<Resume> stuResumes = student.getResumes();
         try (FileWriter file = new FileWriter("Resume.txt")) {
@@ -173,6 +192,10 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param fileName
+     * @param jsonArray
+     */
     private static void writeJsonToFile(String fileName, JSONArray jsonArray) {
         try (FileWriter file = new FileWriter(fileName)) {
 
@@ -184,6 +207,9 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         saveJobs();
         saveUsers();

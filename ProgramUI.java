@@ -4,81 +4,83 @@ public class ProgramUI {
     private Scanner scanner;
     private ProgramFacade programFacade;
     private static final String WELCOME_MESSAGE = "Welcome to the Program";
-    private String[] mainMenuOptions = {"Student Login", "Employer Login", "Admin Login", "Logout"};
+    private String[] mainMenuOptions = { "Student Login", "Employer Login", "Admin Login", "Logout" };
 
     public ProgramUI() {
         scanner = new Scanner(System.in);
         programFacade = new ProgramFacade();
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         ProgramUI programUI = new ProgramUI();
         programUI.run();
     }
 
-
     public void run() {
         System.out.println(WELCOME_MESSAGE);
-        
-        while(true) {
-            displayMainMenu();
 
+        while (true) {
+            displayMainMenu();
 
             int userCommand = getUserCommand(mainMenuOptions.length);
 
-            if(userCommand == -1) {
+            if (userCommand == -1) {
                 System.out.println("Not a valid command");
                 continue;
             }
 
-            //check to logout
-            if(userCommand == mainMenuOptions.length -1) break;
+            if (userCommand == mainMenuOptions.length - 1)
+                break;
 
-            
-            switch(userCommand) {
-                case(0):
-                    studentLogin();
-                    // System.out.println(findStudent());
-                    break;
-                case(1):
-                    employerLogin();
-                    break;
-                case(2):
-                    adminLogin();;
-                    break;
-                default:
-                    break;
+            switch (userCommand) {
+            case (0):
+                studentLogin();
+
+                break;
+            case (1):
+                employerLogin();
+                break;
+            case (2):
+                adminLogin();
+                ;
+                break;
+            default:
+                break;
             }
-
 
             break;
         }
-        //login loop
 
     }
 
     private void displayMainMenu() {
         System.out.println("\n***** Main Menu*****\n");
-        for(int i=0; i<mainMenuOptions.length; i++) {
-            System.out.println((i+1) + ". " + mainMenuOptions[i]);
+        for (int i = 0; i < mainMenuOptions.length; i++) {
+            System.out.println((i + 1) + ". " + mainMenuOptions[i]);
         }
 
     }
 
+    /**
+     * @param numCommands
+     * @return int getUserCommand
+     */
     private int getUserCommand(int numCommands) {
         System.out.println("What would you like to do: \n");
 
         String input = scanner.nextLine();
         int command = Integer.parseInt(input) - 1;
-        if(command >= 0 && command <= numCommands -1) return command;
+        if (command >= 0 && command <= numCommands - 1)
+            return command;
 
         return -1;
     }
 
-
-    // LOGINS
     private void studentLogin() {
-        String userName = getField("Username" );
+        String userName = getField("Username");
 
         if (programFacade.studentLogin(userName)) {
             User currentUser = programFacade.getCurrentUser();
@@ -100,7 +102,7 @@ public class ProgramUI {
             System.out.println("Sorry, invalid username ");
         }
     }
-     
+
     private void adminLogin() {
         String userName = getField("Username");
 
@@ -112,26 +114,28 @@ public class ProgramUI {
             System.out.println("Sorry, invalid username ");
         }
     }
-    
 
-    // HELPER METHODS
+    /**
+     * @param currentUser
+     */
     private void verifyPassword(User currentUser) {
-        
+
         String password = getField("Password");
         if (programFacade.verifyPassword(password)) {
             System.out.println("Welcome " + currentUser.getDisplayName());
         } else {
             System.out.println("Sorry, invalid password ");
-            }
+        }
     }
 
-    
+    /**
+     * @param prompt
+     * @return String getField
+     */
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
     }
-    
-
 
     public void displayResumes() {
 

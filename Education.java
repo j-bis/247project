@@ -1,20 +1,24 @@
 import java.util.*;
+
 public class Education {
     private Scanner scanner;
-    private String school; //Creates String school
-    private String degree; //Creates String degree
-    private String gpa;//Creates String gpa
+    private String school;
+    private String degree;
+    private String gpa;
 
     public Education(String school, String degree, String gpa) {
-        this.school = school; //Calls String school
-        this.degree = degree; //Calls String degree
-        this.gpa = gpa; //Calls String gpa
+        this.school = school;
+        this.degree = degree;
+        this.gpa = gpa;
     }
 
     public Education() {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * @return Education
+     */
     public Education addEducation() {
         Education thisEducation = new Education();
         System.out.println("Education Field: ");
@@ -24,42 +28,61 @@ public class Education {
         return thisEducation;
     }
 
-    //setters
+    /**
+     * @param school
+     */
     public void setSchool(String school) {
         this.school = school;
     }
 
+    /**
+     * @param degree
+     */
     public void setDegree(String degree) {
         this.degree = degree;
     }
 
+    /**
+     * @param gpa
+     */
     public void setgpa(String gpa) {
         this.gpa = gpa;
     }
 
-
-
-    // getters
-    public String getSchool() { //Method to return school
-        return school;            
+    /**
+     * @return String getSchool
+     */
+    public String getSchool() {
+        return school;
     }
 
-    public String getDegree() { //Method to return degree
+    /**
+     * @return String getDegree
+     */
+    public String getDegree() {
         return degree;
     }
 
-    public String getGpa() { //Method to return gpa
+    /**
+     * @return String getGpa
+     */
+    public String getGpa() {
         return gpa;
     }
 
-    //HELPER METHODS
+    /**
+     * @param prompt
+     * @return String getField
+     */
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
     }
 
+    /**
+     * @return String toString
+     */
     public String toString() {
-        return "School: " + this.school + "\n   Degree: " + this.degree
-        + "\n   GPA: " + this.gpa;
+        return "School: " + this.school + "\n   Degree: " + this.degree + "\n   GPA: " + this.gpa;
     }
 }

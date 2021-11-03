@@ -1,32 +1,36 @@
 import java.util.ArrayList;
 
 public class ResumeEditor {
-    //private ArrayList<Resume> resumeList1;
+
     private Resume resume;
     private ResumeList resumeList = ResumeList.getInstance();
 
+    public ResumeEditor() {
+    }
 
-
-    public ResumeEditor() {}
-
-    //Method to create new Resume.
-    public void newResume(String id, String title, ArrayList<Experience> experience, ArrayList<Education> education, ArrayList<String> skills) {
+    /**
+     * @param id
+     * @param title
+     * @param experience
+     * @param education
+     * @param skills
+     */
+    public void newResume(String id, String title, ArrayList<Experience> experience, ArrayList<Education> education,
+            ArrayList<String> skills) {
         Resume newResume = new Resume(id, title, experience, education, skills);
 
         resumeList.addResume(newResume);
-    } 
+    }
 
-    //Method to edit Resume.
     public void editResume() {
 
-    } 
-    
-    // Method to save Resume.
+    }
+
     public void saveResume() {
 
-    } 
-    // Method to delete Resume.
+    }
+
     public void deleteReume() {
 
-    } 
+    }
 }
