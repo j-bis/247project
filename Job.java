@@ -17,14 +17,14 @@ public class Job {
     }
 
     /**
-     * @return String
+     * @return String getID
      */
     public String getID() {
         return this.id;
     }
 
     /**
-     * @return String
+     * @return String getTitle
      */
     public String getTitle() {
         return title;
