@@ -1,7 +1,7 @@
 import java.util.*;
 public abstract class User {
     private String id;
-    protected String username;
+    // protected String username;
 
 
     public User() {
@@ -32,9 +32,9 @@ public abstract class User {
 
     public abstract String getPass();
 
-    public String getUserName() {
-        return this.username;
-    }
+    // public String getUserName() {
+    //     return this.username;
+    // }
 
     public String getContactInfo() {
         return null;

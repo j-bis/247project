@@ -6,7 +6,7 @@ public class Student extends User {
     private final String type;
     private String id;
     private String displayName;
-    // private String username;
+    private String username;
     private String password;
     private boolean verified = false;
     private String contactInfo;
@@ -27,7 +27,13 @@ public class Student extends User {
         this.myResumes = myResumes;
     }
 
-    // source: https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    /**
+     * Verify takes an emailaddress and uses regular expression 
+     * to make sure the user entered a valid email for contact purposes
+     * source: https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+     * @param emailAddress the email to verify
+     * @return Returns true if valid, false otherwise
+     */
     public boolean verify(String emailAddress) {
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                         "[a-zA-Z0-9_+&*-]+)*@email.sc.edu";

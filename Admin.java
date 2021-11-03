@@ -4,7 +4,7 @@ public class Admin extends User{
     private final String type;
     private String id;
     private String displayName;
-   // private String username;
+   private String username;
     private String password;
 
 
