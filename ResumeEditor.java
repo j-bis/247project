@@ -1,11 +1,20 @@
 import java.util.ArrayList;
 
 public class ResumeEditor {
-    //private ArrayList<Resume> resumeList1;
+
     private Resume resume;
     private static ResumeList resumeList = ResumeList.getInstance();
 
+    public ResumeEditor() {
+    }
 
+    /**
+     * @param id
+     * @param title
+     * @param experience
+     * @param education
+     * @param skills
+     */
 
     public ResumeEditor() {}
 
@@ -14,19 +23,17 @@ public class ResumeEditor {
         Resume newResume = new Resume(title, experience, education, skills);
 
         resumeList.addResume(newResume);
-    } 
+    }
 
-    //Method to edit Resume.
     public void editResume() {
 
-    } 
-    
-    // Method to save Resume.
+    }
+
     public void saveResume() {
 
-    } 
-    // Method to delete Resume.
+    }
+
     public void deleteReume() {
 
-    } 
+    }
 }

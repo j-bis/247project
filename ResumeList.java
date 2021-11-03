@@ -9,6 +9,9 @@ public class ResumeList {
         resume = DataLoader.loadResumes();
     }
 
+    /**
+     * @return ResumeList
+     */
     public static ResumeList getInstance() {
         if (resumeList == null) {
             resumeList = new ResumeList();
@@ -17,6 +20,10 @@ public class ResumeList {
         return resumeList;
     }
 
+    /**
+     * @param id
+     * @return Resume
+     */
     public static Resume getResumeByUUID(UUID id) {
         for (Resume i : resume) {
             if (i.getID().equals(id.toString())) {
@@ -26,15 +33,21 @@ public class ResumeList {
         return null;
     }
 
-    public void addResume(Resume aResume) {
-        resume.add(aResume);
-        //DataWriter.saveResume();
+    /**
+     * @param aresume
+     */
+    public void addResume(Resume aresume) {
+        resume.add(aresume);
+        // DataWriter.saveResume();
     }
-    
+
+    /**
+     * @return ArrayList<Resume>
+     */
     public ArrayList<Resume> getResumes() {
         return resume;
     }
-    
+
     public void saveResume() {
         DataWriter.saveResume();
     }

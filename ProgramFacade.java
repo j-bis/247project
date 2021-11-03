@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ProgramFacade {
-    
+
     private JobListings jobListings = JobListings.getInstance();
     private ResumeList resumeList = ResumeList.getInstance();
     private UserList userList = UserList.getInstance();
@@ -13,19 +13,22 @@ public class ProgramFacade {
     private ArrayList<Student> studentArrayList;
     private ArrayList<Application> applicationArrayList;
     private ArrayList<Resume> resumeArrayList;
-    
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         ProgramFacade programFacade = new ProgramFacade();
         programFacade.addResume();
     }
 
-
     public ProgramFacade() {
-        
+
     }
 
-
+    /**
+     * @return User
+     */
     public User getCurrentUser() {
         return currentUser;
     }
@@ -36,28 +39,19 @@ public class ProgramFacade {
     }
 
     // loads
-    
+
     /*
-    public void loadJobs() {
-        jobArrayList = DataLoader.loadJobs();
-    }
-
-    public void loadUsers() {
-        userArrayList = DataLoader.loadUsers();
-    }
-
-    public void loadStudents() {
-        studentArrayList = DataLoader.loadStudents();
-    }
-    
-    public void loadApplications() {
-        applicationArrayList = DataLoader.loadApplications();
-    }
-
-    public void loadResumes() {
-        resumeArrayList = DataLoader.loadResumes();
-    }
-    */
+     * public void loadJobs() { jobArrayList = DataLoader.loadJobs(); }
+     * 
+     * public void loadUsers() { userArrayList = DataLoader.loadUsers(); }
+     * 
+     * public void loadStudents() { studentArrayList = DataLoader.loadStudents(); }
+     * 
+     * public void loadApplications() { applicationArrayList =
+     * DataLoader.loadApplications(); }
+     * 
+     * public void loadResumes() { resumeArrayList = DataLoader.loadResumes(); }
+     */
 
     // prints
     public void printJobs() {
@@ -94,41 +88,58 @@ public class ProgramFacade {
             System.out.println(i + "\n");
         }
     }
-    
 
-
-    //logins
+    /**
+     * @param username
+     * @return boolean studentLogin
+     */
+    // logins
 
     public boolean createAccount(String type) {
         return userList.addUser(type);
     }
 
     public boolean studentLogin(String username) {
-        if(!userList.findStudent(username)) return false;
+        if (!userList.findStudent(username))
+            return false;
 
         currentUser = userList.getUser(username);
         return true;
     }
 
+    /**
+     * @param username
+     * @return boolean employerLogin
+     */
     public boolean employerLogin(String username) {
-        if(!userList.findEmployer(username)) return false;
+        if (!userList.findEmployer(username))
+            return false;
 
         currentUser = userList.getUser(username);
         return true;
     }
 
+    /**
+     * @param username
+     * @return boolean adminLogin
+     */
     public boolean adminLogin(String username) {
-        if(!userList.findAdmin(username)) return false;
+        if (!userList.findAdmin(username))
+            return false;
 
         currentUser = userList.getUser(username);
         return true;
     }
 
-
-   public boolean verifyPassword(String password) {
-       if(currentUser.getPass().equals(password)) return true;
-       return false;
-   }
+    /**
+     * @param password
+     * @return boolean verifyPassword
+     */
+    public boolean verifyPassword(String password) {
+        if (currentUser.getPass().equals(password))
+            return true;
+        return false;
+    }
 
     public Job findJob() {
         return new Job();

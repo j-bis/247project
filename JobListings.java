@@ -12,6 +12,9 @@ public class JobListings {
         jobsArrayList = DataLoader.loadJobs();
     }
 
+    /**
+     * @return JobListings
+     */
     public static JobListings getInstance() {
         if (jobListing == null) {
             jobListing = new JobListings();
@@ -20,11 +23,20 @@ public class JobListings {
         return jobListing;
     }
 
+    /**
+     * @param job
+     * @param resume
+     * @param student
+     */
     public void apply(Job job, Resume resume, Student student) {
 
     }
 
 
+    /**
+     * @param employer
+     * @return ArrayList<Job>
+     */
     public ArrayList<Job> search(String employer) {
         return new ArrayList<Job>();
     }
@@ -43,10 +55,16 @@ public class JobListings {
         return "";
     }
 
+    /**
+     * @return ArrayList<Job>
+     */
     public ArrayList<Job> getJobs() {
         return jobsArrayList;
     }
 
+    /**
+     * @return Job
+     */
     public Job getUUID() {
         return new Job();
     }
@@ -55,6 +73,10 @@ public class JobListings {
         DataWriter.saveJobs();
     }
 
+    /**
+     * @param id
+     * @return Job
+     */
     public static Job getJobByUUID(UUID id) {
         for (Job i : jobsArrayList) {
             if (i.getID().equals(id.toString())) {

@@ -13,7 +13,10 @@ public class UserList {
         employers = DataLoader.loadEmployers();
         admins = DataLoader.loadAdmins();
     }
-    
+
+    /**
+     * @return UserList
+     */
     public static UserList getInstance() {
         if (userList == null) {
             userList = new UserList();
@@ -22,6 +25,10 @@ public class UserList {
         return userList;
     }
 
+    /**
+     * @param id
+     * @return Student
+     */
     public static Student getStudentById(UUID id) {
         String StringID = id.toString();
         for (Student student : students) {
@@ -32,7 +39,12 @@ public class UserList {
 
         return null;
     }
-        //getStudentById(UUID id)
+
+    /**
+     * @param id
+     * @return User
+     */
+    // getStudentById(UUID id)
     public static User getUserById(String id) {
         for (User user : users) {
             if (user.getID().equals(id)) {
@@ -43,16 +55,12 @@ public class UserList {
         return null;
     }
 
+    /**
+     * @return ArrayList<User>
+     */
     public ArrayList<User> getUsers() {
         return users;
     }
-
-    /*
-    public boolean findUser(String username) {
-        if (users.contains(username)) return true;
-        return false;
-    }
-    */
 
     public boolean findStudent(String username) {
         for (int i=0; i<students.size(); i++) {
@@ -61,27 +69,39 @@ public class UserList {
         return false;
     }
 
+    /**
+     * @param username
+     * @return boolean findEmployer
+     */
     public boolean findEmployer(String username) {
         System.out.println(check);
-        for (int i=0; i<employers.size(); i++) {
-            if (employers.get(i).getUsername().equals(username)) return true;
+        for (int i = 0; i < employers.size(); i++) {
+            if (employers.get(i).getUsername().equals(username))
+                return true;
         }
         return false;
     }
 
+    /**
+     * @param username
+     * @return boolean findAdmin
+     */
     public boolean findAdmin(String username) {
         System.out.println(check);
-        for (int i=0; i<admins.size(); i++) {
-            if (admins.get(i).getUsername().equals(username)) return true;
+        for (int i = 0; i < admins.size(); i++) {
+            if (admins.get(i).getUsername().equals(username))
+                return true;
         }
         return false;
     }
 
-
-    
+    /**
+     * @param username
+     * @return User
+     */
     public User getUser(String username) {
-        for(User user : users) {
-            if(user.getUsername().equals(username)) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
@@ -98,6 +118,9 @@ public class UserList {
         return true;
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         UserList userlist = new UserList();
 

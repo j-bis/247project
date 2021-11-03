@@ -15,26 +15,45 @@ public class Application {
         this.resumes = resumes;
     }
 
+    /**
+     * @return String getID
+     */
     public String getID() {
         return this.id;
     }
 
+    /**
+     * @return String getjobID
+     */
     public String getjobID() {
         return this.jobListingID;
     }
 
+    /**
+     * @return ArrayList<Student>
+     */
     public ArrayList<Student> getApplicants() {
         return applicants;
     }
 
+    /**
+     * @return ArrayList<Resume>
+     */
     public ArrayList<Resume> getResumes() {
         return resumes;
     }
 
+    /**
+     * @param index
+     * @return String getResumeId
+     */
     public String getResumeId(int index) {
         return resumes.get(index).getID();
     }
 
+    /**
+     * @return String printAppsAndResumes
+     */
     public String printAppsAndResumes() {
         String ret = "";
         ArrayList<Student> students = DataLoader.loadStudents();
@@ -54,6 +73,9 @@ public class Application {
         return ret;
     }
 
+    /**
+     * @return String toString
+     */
     public String toString() {
         return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
 

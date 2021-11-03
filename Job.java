@@ -19,6 +19,9 @@ public class Job {
         this.description = description;
     }
 
+    /**
+     * @return String getID
+     */
     public String getID() {
         return this.id;
     }
@@ -35,21 +38,34 @@ public class Job {
         return title;
     }
 
+    /**
+     * @return String getEmployer
+     */
     public String getEmployer() {
         return employer;
     }
 
+    /**
+     * @return String getDescription
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return String getReveiws
+     */
     public String getReveiws() {
         return "";
     }
 
+    /**
+     * @return String toString
+     */
     public String toString() {
         return "ID: " + getID() + "\n" + getTitle() + "\nDescription: " + getDescription();
     }
 
-    public void addReview() {}
+    public void addReview() {
+    }
 }

@@ -20,22 +20,23 @@ public class ProgramUI {
         programFacade = new ProgramFacade();
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         ProgramUI programUI = new ProgramUI();
         programUI.run();
     }
 
-
     public void run() {
         System.out.println(WELCOME_MESSAGE);
-        
-        while(true) {
-            displayMainMenu();
 
+        while (true) {
+            displayMainMenu();
 
             int userCommand = getUserCommand(mainMenuOptions.length);
 
-            if(userCommand == -1) {
+            if (userCommand == -1) {
                 System.out.println("Not a valid command");
                 continue;
             }
@@ -62,27 +63,30 @@ public class ProgramUI {
                     break;
             }
 
-
             break;
         }
-        //login loop
 
     }
 
     private void displayMainMenu() {
         System.out.println("\n***** Main Menu*****\n");
-        for(int i=0; i<mainMenuOptions.length; i++) {
-            System.out.println((i+1) + ". " + mainMenuOptions[i]);
+        for (int i = 0; i < mainMenuOptions.length; i++) {
+            System.out.println((i + 1) + ". " + mainMenuOptions[i]);
         }
 
     }
 
+    /**
+     * @param numCommands
+     * @return int
+     */
     private int getUserCommand(int numCommands) {
         System.out.println("\nWhat would you like to do: \n");
 
         String input = scanner.nextLine();
         int command = Integer.parseInt(input) - 1;
-        if(command >= 0 && command <= numCommands -1) return command;
+        if (command >= 0 && command <= numCommands - 1)
+            return command;
 
         return -1;
     }
@@ -105,7 +109,7 @@ public class ProgramUI {
 
     // LOGINS
     private void studentLogin() {
-        String userName = getField("Username" );
+        String userName = getField("Username");
 
         if (programFacade.studentLogin(userName)) {
             currentUser = programFacade.getCurrentUser();
@@ -229,7 +233,7 @@ public class ProgramUI {
             System.out.println("Sorry, invalid username ");
         }
     }
-     
+
     private void adminLogin() {
         String userName = getField("Username");
 
@@ -241,29 +245,34 @@ public class ProgramUI {
             System.out.println("Sorry, invalid username ");
         }
     }
-    
 
-    // HELPER METHODS
+    /**
+     * @param currentUser
+     */
+
     private void verifyPassword(User currentUser) {
-        
+
         String password = getField("Password");
         if (programFacade.verifyPassword(password)) {
             System.out.println("Welcome " + currentUser.getDisplayName());
+            System.out.println("Resume " + currentUser.getResumes());
+
         } else {
             System.out.println("Sorry, invalid password ");
-            }
+        }
     }
 
-    
+    public void displayResumes(User currentUser) {
+        System.out.println("Resume " + currentUser.getResumes());
+    }
+
+    /**
+     * @param prompt
+     * @return String getField
+     */
     private String getField(String prompt) {
         System.out.println(prompt + ": ");
         return scanner.nextLine();
-    }
-    
-
-
-    public void displayResumes() {
-
     }
 
     public void displayJobListings() {
