@@ -306,6 +306,8 @@ public class ProgramUI {
                         // }
 
                         // System.out.println(myJobs.get(getUserCommand(myJobs.size()).printApplicants()));
+                    } else {
+                        jobListingsView = false;
                     }
                 }
                 break;
