@@ -1,0 +1,33 @@
+Aaron Longshore
+(474)344-3456
+along@gmail.com
+**********************************
+
+Education: 
+  -School: UofSC
+  -Degree: Bachelors in Computer Information Systems
+  -Expected Graduation Date: 2023
+
+Experience: 
+  -Job title: Software Developer
+  -Previous Employer: JP Morgan
+  -Job type: Internship
+  -Date of Employment: May 2019 - Aug 2019
+  -Job description: 
+    -Create a Python program to predict clients needs.
+    -Managed incoming customers and future predictions.
+
+  -Job title: Test Engineer
+  -Previous Employer: Bank of America
+  -Job type: Internship
+  -Date of Employment: May 2020 - Aug 2020
+  -Job description: 
+    -Created JUnit tests cases to test new features of the back end of the banks website.
+    -Executed test cases and reported issues to engineering.
+
+Skills: 
+  -Python
+  -Java
+  -JavaScript
+  -HTML
+  -CSS

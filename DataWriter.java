@@ -61,7 +61,7 @@ public class DataWriter {
             jsonResume.add(getResumeJSON(resumes.get(i)));
         }
 
-        writeJsonToFile("resumeTest.json", jsonResume);
+        writeJsonToFile("resumes.json", jsonResume);
     }
 
     /**
@@ -80,7 +80,7 @@ public class DataWriter {
             jsonApplicants.add(getApplicantsJSON(applicant.get(i)));
         }
 
-        writeJsonToFile("applicationTest.json", jsonApplicants);
+        writeJsonToFile("applications.json", jsonApplicants);
     }
 
     /**

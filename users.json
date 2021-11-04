@@ -43,10 +43,20 @@
 	"displayName":"Anthony Ramirez",
 	"username":"ant-z",
 	"password":"beebobeeboodiedboop-5454",
-	"contactInfo":"(567)367-2825\naramirez5@outlook.com",
+	"contactInfo":"(567)367-2825\naramirez5@email.sc.edu",
 	"resumes":
 	[
 	"1a5168c6-56d6-46a7-bcb3-1736dbd3ec72"
+	]
+  },{
+	"id":"a88b03d9-3977-4202-91be-1a2f927f30e4",
+	"type":"0",
+	"displayName":"Johnny Sins",
+	"username":"johns",
+	"password":"itsyaboijohn",
+	"contactInfo":"(498)345-1093\njsing@email.sc.edu",
+	"resumes":
+	[
 	]
   }
 ]

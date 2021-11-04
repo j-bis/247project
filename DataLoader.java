@@ -289,12 +289,12 @@ public class DataLoader {
                     // String resumeID = (String)IDs.get("resume");
                     applicantIDs.add(UUID.fromString((String) IDs.get("user")));
                     resumeIDs.add(UUID.fromString((String) IDs.get("resume")));
-                    System.out.println((String) IDs.get("user"));
-                    System.out.println((String) IDs.get("resume"));
-                    System.out.println("");
+                    // System.out.println((String) IDs.get("user"));
+                    // System.out.println((String) IDs.get("resume"));
+                    // System.out.println("");
                 }
                 for (int j = 0; j < entries.size(); j++) {
-                    System.out.println("size" + entries.size() + " " + applicantIDs.get(j));
+                    // System.out.println("size" + entries.size() + " " + applicantIDs.get(j));
                     applicants.add(UserList.getStudentById(applicantIDs.get(j)));
                     resumes.add(ResumeList.getResumeByUUID(resumeIDs.get(j)));
                 }
