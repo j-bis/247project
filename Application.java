@@ -51,27 +51,6 @@ public class Application {
         return resumes.get(index).getID();
     }
 
-    /**
-     * @return String printAppsAndResumes
-     */
-    public String printAppsAndResumes() {
-        String ret = "";
-        ArrayList<Student> students = DataLoader.loadStudents();
-        ArrayList<Resume> resumes = DataLoader.loadResumes();
-        for (int i = 0; i < applicants.size(); i++) {
-            for (Student j : students) {
-                if (i.equals(j.getID())) {
-                    ret += j.getContactInfo() + "\n";
-                    for (Resume k : resumes) {
-                        if ((i + 1).equals(k.getID())) {// ask about i+1 here
-                            ret += k;
-                        }
-                    }
-                }
-            }
-        }
-        return ret;
-    }
 
     public void addApplicant(String studentID, String resumeID) {
         students.add(studentID);
