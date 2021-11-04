@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Resume {
-    private Scanner scanner;//keep this
+    private Scanner scanner;// keep this
     private String id;
     private String title;
     private ArrayList<Experience> experienceArrayList;
@@ -17,7 +17,8 @@ public class Resume {
         this.skillsArrayList = skills;
     }
 
-    public Resume(String title, ArrayList<Experience> experience, ArrayList<Education> education, ArrayList<String> skills) {
+    public Resume(String title, ArrayList<Experience> experience, ArrayList<Education> education,
+            ArrayList<String> skills) {
         id = UUID.randomUUID().toString();
         this.title = title;
         this.educationArrayList = education;
@@ -45,7 +46,7 @@ public class Resume {
      * @param args
      */
     public static void main(String[] args) {
-        //Resume res = new Resume();
+        // Resume res = new Resume();
 
     }
 
@@ -168,7 +169,13 @@ public class Resume {
     }
 
     public String toString() {
-        return "\nEducation: \n" + printEducation() + "\nExperience: \n" + printExperience() + "Skills: \n"
-                + printSkills();
+        return "\nEducation: \n" + printEducation() + "\nExperience: \n" + printExperience()
+                + "Skills: \n" + printSkills();
     }
+
+    // public String getContacts() {
+    //     //Student student = UserList.getStudentById(UUID.fromString(id));
+    //     //System.out.println(ProgramFacade.getCurrentUser());
+    //     return UserList.getContactsByResumeID(id);
+    // }
 }

@@ -74,7 +74,6 @@ public class UserList {
      * @return boolean findEmployer
      */
     public boolean findEmployer(String username) {
-        System.out.println(check);
         for (int i = 0; i < employers.size(); i++) {
             if (employers.get(i).getUsername().equals(username))
                 return true;
@@ -87,7 +86,6 @@ public class UserList {
      * @return boolean findAdmin
      */
     public boolean findAdmin(String username) {
-        System.out.println(check);
         for (int i = 0; i < admins.size(); i++) {
             if (admins.get(i).getUsername().equals(username))
                 return true;
@@ -131,5 +129,15 @@ public class UserList {
 
     public void saveUserList() {
         DataWriter.saveUsers();
+    }
+
+    public String getContactsByResumeID(String id) {
+        for (Student i : students) {
+            for (Resume r : i.getResumes()) {
+                if (r.getID().equals(id)) {
+                    return i.getContactInfo();
+                }
+            }
+        }
     }
 }

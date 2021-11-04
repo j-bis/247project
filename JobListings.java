@@ -44,7 +44,7 @@ public class JobListings {
     public static ArrayList<Job> searchBySkills(String skill) {
         ArrayList<Job> searchResults = new ArrayList<Job>();
         for (Job jobs : jobsArrayList) {
-            if (jobs.getSkillsArrayList().contains(skill.toLowerCase().trim())) {
+            if (jobs.getDescription().contains(skill)) {
                 searchResults.add(jobs);
             }
         }

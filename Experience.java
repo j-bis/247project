@@ -44,7 +44,11 @@ class Experience {
     /**
      * @param duties
      */
-    public void setDuties(String duty) {
+    public void setDuties(ArrayList<String> duties) {
+        this.duties = duties;
+    }
+
+    public void addDuties(String duty) {
         this.duties.add(duty);
     }
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Job {
     private String id;
@@ -7,10 +8,10 @@ public class Job {
     private String description;
     private ArrayList<String> skillsArrayList;
     private ArrayList<Student> applicants;
-    //private ArrayList<Reveiw> reviews;
-    
-    public Job(){
+    // private ArrayList<Reveiw> reviews;
 
+    public Job() {
+        id = UUID.randomUUID().toString();
     }
 
     public Job(String id, String title, String description) {
@@ -63,9 +64,14 @@ public class Job {
      * @return String toString
      */
     public String toString() {
-        return "ID: " + getID() + "\n" + getTitle() + "\nDescription: " + getDescription();
+        return "\n" + getTitle() + "\nDescription: " + getDescription();
     }
 
     public void addReview() {
+    }
+
+    public String printApplicants() {
+        
+        for (int i=0;i<)
     }
 }

@@ -73,12 +73,26 @@ public class Application {
         return ret;
     }
 
+    public void addApplicant(String studentID, String resumeID) {
+        students.add(studentID);
+        resumes.add(resumeID);
+    }
+
+
     /**
      * @return String toString
      */
     public String toString() {
-        return this.id + " ;alsjfas;jf;sajf;slfjsladkf";
+        return this.id + printResumes();
 
+    }
+
+    public String printResumes() {
+        String ret = "";
+        for (int i=0;i<applicants.size();i++) {
+            ret += applicants.get(i) + "\n" + resumes.get(i) + "\n";
+        }
+        return ret;
     }
 
 }

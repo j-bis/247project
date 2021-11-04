@@ -232,15 +232,15 @@ public class DataLoader {
                 for (int j = 0; j < experiences.size(); j++) {
                     JSONObject experience = (JSONObject) experiences.get(j);
                     String ExperienceTitle = (String) experience.get("title");
-                    
+
                     JSONArray duties = (JSONArray) experience.get("duties");
                     ArrayList<String> dutiesAL = new ArrayList<String>();
                     for (int k = 0; k < duties.size(); k++) {
                         dutiesAL.add((String) duties.get(k));
                     }
                     String company = (String) experience.get("company");
-                    String type = (String)experience.get("type");
-                    String date = (String)experience.get("date");
+                    String type = (String) experience.get("type");
+                    String date = (String) experience.get("date");
                     experienceArray.add(new Experience(ExperienceTitle, dutiesAL, company, type, date));
                 }
 
@@ -289,9 +289,12 @@ public class DataLoader {
                     // String resumeID = (String)IDs.get("resume");
                     applicantIDs.add(UUID.fromString((String) IDs.get("user")));
                     resumeIDs.add(UUID.fromString((String) IDs.get("resume")));
+                    System.out.println((String) IDs.get("user"));
+                    System.out.println((String) IDs.get("resume"));
+                    System.out.println("");
                 }
-                for (int j = 0; j < applicantIDs.size(); j++) {
-                    // System.out.println(j);
+                for (int j = 0; j < entries.size(); j++) {
+                    System.out.println("size" + entries.size() + " " + applicantIDs.get(j));
                     applicants.add(UserList.getStudentById(applicantIDs.get(j)));
                     resumes.add(ResumeList.getResumeByUUID(resumeIDs.get(j)));
                 }

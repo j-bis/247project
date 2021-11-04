@@ -50,9 +50,19 @@ public class ApplicationList {
     public static void addApplicant(String jobID, String studentID, String resumeID) {
         for (Application a : applicants) {
             if (jobID.equals(a.getID())) {
-                a.applicants.add(studentID);
-                a.resumes.add(resumeID);
+                a.addApplicant(studentID, resumeID);
+                // a.applicants.add(studentID);
+                // a.resumes.add(resumeID);
             }
         }
-    } 
+    }
+
+    public static Application getAppByJobID(String id) {
+        for (Application app : applicants) {
+            if (app.getjobID().equals(id)) {
+                return app;
+            }
+        }
+        return null;
+    }
 }
