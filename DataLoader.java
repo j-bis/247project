@@ -353,4 +353,17 @@ public class DataLoader {
         }
 
     }
+
+    public static void init() {
+        JobListings jobListings = JobListings.getInstance();
+        ResumeList resumeList = ResumeList.getInstance();
+        UserList userlist = UserList.getInstance();
+        ApplicationList applicationList = ApplicationList.getInstance();
+
+        ArrayList<Job> jobs = loadJobs();
+        ArrayList<Resume> resumes = loadResumes();
+        ArrayList<User> users = loadUsers();
+        ArrayList<Student> students = loadStudents();
+        ArrayList<Application> apps = loadApplications();
+    }
 }
