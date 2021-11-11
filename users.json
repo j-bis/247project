@@ -3,7 +3,7 @@
 	"id":"2d6159e1-46d9-4248-8356-c9576cacf5a1",
 	"type":"0",
 	"displayName":"Aaron Longshore",
-	"username":"arone",
+	"username":"Arone",
 	"password":"waterfall,3463",
 	"contactInfo":"(474)344-3456\nalong@gmail.com",
 	"resumes":
@@ -18,7 +18,8 @@
 	"password":"m-w5346.4w5aw4ze",
 	"jobListings":
 	[
-	"d6383f24-c509-4ee3-84eb-8bda3946290b"
+	"d6383f24-c509-4ee3-84eb-8bda3946290b",
+	"13b47eda-1676-48cb-ade6-55f77b6c89e2"
 	]
   },{
 	"id":"1ba201e1-9660-40a1-bee8-0a34368ad1af",
@@ -42,10 +43,20 @@
 	"displayName":"Anthony Ramirez",
 	"username":"ant-z",
 	"password":"beebobeeboodiedboop-5454",
-	"contactInfo":"(567)367-2825\naramirez5@outlook.com",
+	"contactInfo":"(567)367-2825\naramirez5@email.sc.edu",
 	"resumes":
 	[
 	"1a5168c6-56d6-46a7-bcb3-1736dbd3ec72"
+	]
+  },{
+	"id":"a88b03d9-3977-4202-91be-1a2f927f30e4",
+	"type":"0",
+	"displayName":"Johnny Sins",
+	"username":"johns",
+	"password":"itsyaboijohn",
+	"contactInfo":"(498)345-1093\njsing@email.sc.edu",
+	"resumes":
+	[
 	]
   }
 ]

@@ -7,10 +7,23 @@ public class Skills {
         this.skills = skills;
     }
 
+    /**
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getSkills() {
         return skills;
     }
 
+    /**
+     * @param skill
+     */
+    public void addSkill(String skill) {
+        this.skills.add(skill);
+    }
+
+    /**
+     * @return String toString
+     */
     public String toString() {
         return "";
     }

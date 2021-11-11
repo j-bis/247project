@@ -1,14 +1,23 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * The datawriter class handles writing the users, resumes, joblistings and
+ * applications to a json file to be loaded during next program launch. It also
+ * has a file out operation that prints the resume to a text file.
+ */
 public class DataWriter {
-    
+
+    /**
+     * The saveUsers method loops through the userlist and stores the users and the
+     * data in a jsonArray that is then saved to a json file.
+     */
     public static void saveUsers() {
+        ResumeList resumeList = ResumeList.getInstance();
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -17,22 +26,32 @@ public class DataWriter {
             jsonUsers.add(getUserJSON(users.get(i)));
         }
 
-        writeToFile("usersTest.json", jsonUsers);
+        writeJsonToFile("usersTest.json", jsonUsers);
     }
 
+    /**
+     * The savejobs method loops through the job listings and stores the jobs in a
+     * jsonarray that is then passed to the writejsonfile method to be saved as a
+     * json file.
+     */
     public static void saveJobs() {
         JobListings jobListing = JobListings.getInstance();
         ArrayList<Job> jobs = jobListing.getJobs();
         JSONArray jsonJobs = new JSONArray();
-        
+
         for (int i = 0; i < jobs.size(); i++) {
             jsonJobs.add(getJobJSON(jobs.get(i)));
         }
 
-        writeToFile("jobListingsTest.json", jsonJobs);
+        writeJsonToFile("jobListingsTest.json", jsonJobs);
 
     }
 
+    /**
+     * The saveResume method loops through the resumes and stores the resumes in a
+     * jsonarray that is then passed to the writejsonfile method to be saved as a
+     * json file.
+     */
     public static void saveResume() {
         ResumeList resumeList = ResumeList.getInstance();
         ArrayList<Resume> resumes = resumeList.getResumes();
@@ -42,11 +61,17 @@ public class DataWriter {
             jsonResume.add(getResumeJSON(resumes.get(i)));
         }
 
-        writeToFile("resumeTest.json", jsonResume);
+        writeJsonToFile("resumes.json", jsonResume);
     }
 
+    /**
+     * The saveApplications method loops through the applicants and stores the
+     * applicants in a jsonarray that is then passed to the writejsonfile method to
+     * be saved as a json file.
+     */
     public static void saveApplications() {
         UserList userList = UserList.getInstance();
+        ResumeList resumeList = ResumeList.getInstance();
         ApplicationList applist = ApplicationList.getInstance();
         ArrayList<Application> applicant = applist.getApplicants();
         JSONArray jsonApplicants = new JSONArray();
@@ -55,14 +80,21 @@ public class DataWriter {
             jsonApplicants.add(getApplicantsJSON(applicant.get(i)));
         }
 
-        writeToFile("applicationTest.json", jsonApplicants);
+        writeJsonToFile("applications.json", jsonApplicants);
     }
 
+    /**
+     * The getResumeJson is a helper method for saveResumes that takes in a a resume
+     * and loops through the resume to get each section and put it in a jsonobject.
+     * 
+     * @param resume the student resume to loop through
+     * @return a json json object
+     */
     public static JSONObject getResumeJSON(Resume resume) {
         JSONObject resumeDetails = new JSONObject();
         resumeDetails.put("itemId", resume.getID());
         resumeDetails.put("title", resume.getTitle());
-        
+
         JSONArray eduJSONArray = new JSONArray();
         ArrayList<Education> eduArray = resume.getEducation();
         for (int i = 0; i < eduArray.size(); i++) {
@@ -73,7 +105,7 @@ public class DataWriter {
             eduObject.put("gpa", edu.getGpa());
 
             eduJSONArray.add(eduObject);
-        }     
+        }
         resumeDetails.put("education", eduJSONArray);
 
         JSONArray expJSONArray = new JSONArray();
@@ -82,34 +114,48 @@ public class DataWriter {
             Experience exp = expArray.get(i);
             JSONObject expObject = new JSONObject();
             expObject.put("title", exp.getTitle());
-            expObject.put("duties", exp.getDuties());
+
+            JSONArray dutJsonArray = new JSONArray();
+            ArrayList<String> duties = exp.getDutiesList();
+            for (int j=0; j < duties.size(); j++) {
+                dutJsonArray.add(duties.get(j));
+            }
+            expObject.put("duties", dutJsonArray);
             expObject.put("company", exp.getCompany());
+            expObject.put("type", exp.getType());
+            expObject.put("date", exp.getDate());
 
             expJSONArray.add(expObject);
         }
         resumeDetails.put("experience", expJSONArray);
 
-
         JSONArray skillsJsonArray = new JSONArray();
         ArrayList<String> skillsArray = resume.getSkills();
-        expJSONArray.add(skillsArray);
-        resumeDetails.put("skills", expJSONArray.toJSONString());
+        for (int i = 0; i < skillsArray.size(); i++) {
+            skillsJsonArray.add(skillsArray.get(i));
+        }
+        resumeDetails.put("skills", skillsJsonArray);
 
-        return resumeDetails;    
+        return resumeDetails;
     }
 
+    /**
+     * 
+     * @param application
+     * @return
+     */
     public static JSONObject getApplicantsJSON(Application application) {
         JSONObject applicantDetails = new JSONObject();
         applicantDetails.put("id", application.getID());
         applicantDetails.put("jobListing", application.getjobID());
-        
+
         JSONArray appJSONArray = new JSONArray();
         ArrayList<Student> applicant = application.getApplicants();
+        ArrayList<Resume> appResume = application.getResumes();
         for (int i = 0; i < applicant.size(); i++) {
-            Student stu = applicant.get(i);
             JSONObject stuObject = new JSONObject();
-            stuObject.put("user", stu.getID());
-            stuObject.put("resume", stu.getResumesID());
+            stuObject.put("user", applicant.get(i).getID());
+            stuObject.put("resume", appResume.get(i).getID());
             appJSONArray.add(stuObject);
         }
 
@@ -118,24 +164,48 @@ public class DataWriter {
         return applicantDetails;
     }
 
+    /**
+     * 
+     * @param user
+     * @return
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put("id", user.getID());
         userDetails.put("type", user.getType());
-		userDetails.put("displayName", user.getDisplayName());
-		userDetails.put("username", user.getUsername());
-		userDetails.put("password", user.getPass());
+        userDetails.put("displayName", user.getDisplayName());
+        userDetails.put("username", user.getUsername());
+        userDetails.put("password", user.getPass());
 
         if (user.getType().equals("0")) {
-            userDetails.put("contactInfo", user.getContactInfo()); // Asks about saving display name in contact info
+            userDetails.put("contactInfo", user.getContactInfo());
+
+            JSONArray userResArray = new JSONArray();
+            ArrayList<Resume> resume = user.getResumes();
+            for (int i = 0; i < resume.size(); i++) {
+                userResArray.add(resume.get(i).getID());
+            }
+
+            userDetails.put("resume", userResArray);
 
         } else if (user.getType().equals("1")) {
-            userDetails.put("jobListings", user.getJobID()); // Ask about saving job listings under users
+            JSONArray userJsonArray = new JSONArray();
+            ArrayList<Job> job = user.getJob();
+            for (int i = 0; i < job.size(); i++) {
+                userJsonArray.add(job.get(i).getID());
+            }
+
+            userDetails.put("jobListings", userJsonArray);
         }
 
         return userDetails;
     }
 
+    /**
+     * 
+     * @param job
+     * @return
+     */
     public static JSONObject getJobJSON(Job job) {
         JSONObject jobDetails = new JSONObject();
         jobDetails.put("id", job.getID());
@@ -144,7 +214,36 @@ public class DataWriter {
         return jobDetails;
     }
 
-    private static void writeToFile(String fileName, JSONArray jsonArray) {
+    /**
+     * 
+     * @param student
+     * @param idxResume
+     */
+    public static void writeResumeToTxtFile(User student, int idxResume) {
+        ArrayList<Resume> stuResumes = student.getResumes();
+        try (FileWriter file = new FileWriter("Resume.txt")) {
+            file.write(student.getContactInfo());
+            file.write("\n**********************************\n");
+            file.write(stuResumes.get(idxResume).toString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void save() {
+        saveApplications();
+        saveJobs();
+        saveUsers();
+        saveResume();
+    }
+
+    /**
+     * 
+     * @param fileName
+     * @param jsonArray
+     */
+    private static void writeJsonToFile(String fileName, JSONArray jsonArray) {
         try (FileWriter file = new FileWriter(fileName)) {
 
             file.write(jsonArray.toJSONString());
@@ -155,10 +254,17 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         saveJobs();
         saveUsers();
-        saveApplications();
         saveResume();
+        saveApplications();
+
+        ArrayList<Student> student = DataLoader.loadStudents();
+        Student stu1 = student.get(0);
+        writeResumeToTxtFile(stu1, 0);
     }
 }
