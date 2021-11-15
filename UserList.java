@@ -131,13 +131,13 @@ public class UserList {
         DataWriter.saveUsers();
     }
 
-    public String getContactsByResumeID(String id) {
-        for (Student i : students) {
-            for (Resume r : i.getResumes()) {
-                if (r.getID().equals(id)) {
-                    return i.getContactInfo();
-                }
-            }
-        }
-    }
+    // public String getContactsByResumeID(String id) {
+    //     for (Student i : students) {
+    //         for (Resume r : i.getResumes()) {
+    //             if (r.getID().equals(id)) {
+    //                 return i.getContactInfo();
+    //             }
+    //         }
+    //     }
+    // }
 }

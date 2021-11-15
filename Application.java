@@ -53,7 +53,7 @@ public class Application {
 
 
     public void addApplicant(String studentID, String resumeID) {
-        students.add(studentID);
+        applicants.add(studentID);
         resumes.add(resumeID);
     }
 

@@ -4,30 +4,26 @@ along@gmail.com
 **********************************
 
 Education: 
-  -School: UofSC
-  -Degree: Bachelors in Computer Information Systems
+  -School: University of North Dakota
+  -Degree: A.S. in Computer Science
   -Expected Graduation Date: 2023
 
 Experience: 
-  -Job title: Software Developer
-  -Previous Employer: JP Morgan
-  -Job type: Internship
-  -Date of Employment: May 2019 - Aug 2019
+  -Job title: Fry Cook
+  -Previous Employer: McDonalds
+  -Job type: Part-Time
+  -Date of Employment: August 2018 - June 2019
   -Job description: 
-    -Create a Python program to predict clients needs.
-    -Managed incoming customers and future predictions.
+    -Assured proper production of food to be fit for consumption.
+    -Assembled orders on an assembly line in cooperation with others
 
-  -Job title: Test Engineer
-  -Previous Employer: Bank of America
-  -Job type: Internship
-  -Date of Employment: May 2020 - Aug 2020
+  -Job title: Cashier
+  -Previous Employer: Walmart
+  -Job type: Part-Time
+  -Date of Employment: July 2019 - February 2020
   -Job description: 
-    -Created JUnit tests cases to test new features of the back end of the banks website.
-    -Executed test cases and reported issues to engineering.
+    -Mediated the exchange of goods and services.
 
 Skills: 
-  -Python
-  -Java
-  -JavaScript
-  -HTML
-  -CSS
+  -Experienced in Java
+  -Proficient in Python

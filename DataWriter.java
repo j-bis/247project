@@ -9,6 +9,8 @@ import org.json.simple.JSONObject;
  * The datawriter class handles writing the users, resumes, joblistings and
  * applications to a json file to be loaded during next program launch. It also
  * has a file out operation that prints the resume to a text file.
+ * 
+ * Tested by: Justin Siegfried
  */
 public class DataWriter {
 
@@ -21,9 +23,11 @@ public class DataWriter {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
-
-        for (int i = 0; i < users.size(); ++i) {
-            jsonUsers.add(getUserJSON(users.get(i)));
+        
+        if (users.size() > 0) {
+            for (int i = 0; i < users.size(); ++i) {
+                jsonUsers.add(getUserJSON(users.get(i)));
+            }
         }
 
         writeJsonToFile("usersTest.json", jsonUsers);
@@ -186,7 +190,7 @@ public class DataWriter {
                 userResArray.add(resume.get(i).getID());
             }
 
-            userDetails.put("resume", userResArray);
+            userDetails.put("resumes", userResArray);
 
         } else if (user.getType().equals("1")) {
             JSONArray userJsonArray = new JSONArray();

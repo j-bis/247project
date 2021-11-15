@@ -22,7 +22,7 @@ public class ApplicationList {
     /**
      * @return ArrayList<Application>
      */
-    public static ArrayList<Application> getApplicants() {
+    public ArrayList<Application> getApplicants() {
         return applicants;
     }
 
