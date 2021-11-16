@@ -23,16 +23,24 @@ public class DataWriterTest {
     public void setup() {
         UserList.getInstance().getUsers().clear();
         JobListings.getInstance().getJobs().clear();
-
+        ResumeList.getInstance().getResumes().clear();
+        ApplicationList.getInstance().getApplicants().clear();
         DataWriter.saveUsers();
+        DataWriter.saveJobs();
+        DataWriter.saveResume();
+        DataWriter.saveApplications();
     }
 
     @AfterEach
 	public void tearDown() {
 		UserList.getInstance().getUsers().clear();
         JobListings.getInstance().getJobs().clear();
+        ResumeList.getInstance().getResumes().clear();
+        ApplicationList.getInstance().getApplicants().clear();
 		DataWriter.saveUsers();
         DataWriter.saveJobs();
+        DataWriter.saveResume();
+        DataWriter.saveApplications();
 	}
 
     @Test
@@ -69,14 +77,14 @@ public class DataWriterTest {
 
     @Test
     void testWritingFiveUser() {
-        ArrayList<UUID> testIDs = getUuids(5);
+        ArrayList<String> testIDs = getUuids(5);
         ArrayList<Resume> testResList = rList.getResumes();
         ArrayList<Job> testJobList = jList.getJobs();
-        userList.add(new Student(testIDs.get(0).toString(), "Amy Smith", "asmith", "qwerty1234", "803-454-3344", testResList));
-        userList.add(new Employer(testIDs.get(1).toString(), "Amy Smith", "bsmith", "qwerty1234", testJobList));
-		userList.add(new Admin(testIDs.get(2).toString(), "Amy Smith", "csmith", "qwerty1234"));
-        userList.add(new Student(testIDs.get(3).toString(), "Amy Smith", "dsmith", "qwerty1234", "803-454-3344", testResList));
-        userList.add(new Employer(testIDs.get(4).toString(), "Amy Smith", "esmith", "qwerty1234", testJobList));
+        userList.add(new Student(testIDs.get(0), "Amy Smith", "asmith", "qwerty1234", "803-454-3344", testResList));
+        userList.add(new Employer(testIDs.get(1), "Amy Smith", "bsmith", "qwerty1234", testJobList));
+		userList.add(new Admin(testIDs.get(2), "Amy Smith", "csmith", "qwerty1234"));
+        userList.add(new Student(testIDs.get(3), "Amy Smith", "dsmith", "qwerty1234", "803-454-3344", testResList));
+        userList.add(new Employer(testIDs.get(4), "Amy Smith", "esmith", "qwerty1234", testJobList));
         DataWriter.saveUsers();
         assertEquals("esmith", DataLoader.loadUsers().get(4).getUsername());
     }
@@ -93,7 +101,7 @@ public class DataWriterTest {
 	void testWritingNullUser() {
         String id = UUID.randomUUID().toString();
         ArrayList<Resume> testList = rList.getResumes();
-        userList.add(new Student(id, "", null, "", "", testList));
+        userList.add(new Student(null, null, null, null, null, null));
 		DataWriter.saveUsers();
 		assertEquals(null, DataLoader.loadUsers().get(0).getUsername());
 	}
@@ -114,12 +122,12 @@ public class DataWriterTest {
 
     @Test
     void testWritingFiveJobs() {
-        ArrayList<UUID> testJobIds = getUuids(5);
-        jobList.add(new Job(testJobIds.get(0).toString(), "Internship for Google", "make stuff"));
-        jobList.add(new Job(testJobIds.get(1).toString(), "Internship for Microsoft", "make stuff"));
-        jobList.add(new Job(testJobIds.get(2).toString(), "Internship for Amazon", "make stuff"));
-        jobList.add(new Job(testJobIds.get(3).toString(), "Internship for UofSC", "make stuff"));
-        jobList.add(new Job(testJobIds.get(4).toString(), "Internship for Tesla", "make other stuff"));
+        ArrayList<String> testJobIds = getUuids(5);
+        jobList.add(new Job(testJobIds.get(0), "Internship for Google", "make stuff"));
+        jobList.add(new Job(testJobIds.get(1), "Internship for Microsoft", "make stuff"));
+        jobList.add(new Job(testJobIds.get(2), "Internship for Amazon", "make stuff"));
+        jobList.add(new Job(testJobIds.get(3), "Internship for UofSC", "make stuff"));
+        jobList.add(new Job(testJobIds.get(4), "Internship for Tesla", "make other stuff"));
         DataWriter.saveJobs();
         assertEquals("Internship for Tesla", DataLoader.loadJobs().get(4).getTitle());
     }
@@ -138,10 +146,158 @@ public class DataWriterTest {
         assertEquals(null, DataLoader.loadJobs().get(0).getTitle());
     }
 
-    private ArrayList<UUID> getUuids(int num) {
-        ArrayList<UUID> ids = new ArrayList<UUID>();
+    @Test
+    void testWritingZeroResumes() {
+        resumeList = DataLoader.loadResumes();
+        assertEquals(0, resumeList.size());
+    }
+
+    @Test
+    void testWritingOneResume() {
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        ArrayList<String> duties = new ArrayList<String>();
+        duties.add("Create a Python program to predict clients needs.");
+        Experience experience1 = new Experience("Software Dev", duties, "J.P. Morgan", "Internship", "May 2019");
+        expTest.add(experience1);
+        Education education1 = new Education("UofSC", "Bachelors of Computer Science", "May 2023");
+        eduTest.add(education1);
+        skillTest.add("Java");
+        skillTest.add("C++");
+        skillTest.add("Python");
+        resumeList.add(new Resume("test Resume", expTest, eduTest, skillTest));
+        DataWriter.saveResume();
+        assertEquals("test Resume", DataLoader.loadResumes().get(0).getTitle());   
+    }
+
+    @Test
+    void testWritingFiveResumes() {
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        ArrayList<String> duties = new ArrayList<String>();
+        duties.add("Create a Python program to predict clients needs.");
+        Experience experience1 = new Experience("Software Dev", duties, "J.P. Morgan", "Internship", "May 2019");
+        expTest.add(experience1);
+        Education education1 = new Education("UofSC", "Bachelors of Computer Science", "May 2023");
+        eduTest.add(education1);
+        skillTest.add("Java");
+        skillTest.add("C++");
+        skillTest.add("Python");
+        resumeList.add(new Resume("test Resume1", expTest, eduTest, skillTest));
+        resumeList.add(new Resume("test Resume2", expTest, eduTest, skillTest));
+        resumeList.add(new Resume("test Resume3", expTest, eduTest, skillTest));
+        resumeList.add(new Resume("test Resume4", expTest, eduTest, skillTest));
+        resumeList.add(new Resume("test Resume5", expTest, eduTest, skillTest));
+        DataWriter.saveResume();
+        assertEquals("test Resume5", DataLoader.loadResumes().get(4).getTitle());
+    }
+
+    @Test
+    void testWritingEmptyResume() {
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        resumeList.add(new Resume("", expTest, eduTest, skillTest));
+        DataWriter.saveResume();
+        assertEquals("", DataLoader.loadResumes().get(0).getTitle());
+    }
+
+    @Test
+    void testWritingNullResumes() {
+        resumeList.add(new Resume(null, null, null, null));
+        DataWriter.saveResume();
+        assertEquals(null, DataLoader.loadResumes().get(0).getTitle());
+    }
+
+    @Test
+    void testWritingZeroApplications() {
+        appList = DataLoader.loadApplications();
+        assertEquals(0, appList.size());
+    }
+
+    @Test
+    void testWritingOneApplication() {
+        String id = UUID.randomUUID().toString();
+        String id2 = UUID.randomUUID().toString();
+        ArrayList<Student> applicants = new ArrayList<Student>();
+        ArrayList<Resume> resumes = new ArrayList<Resume>();
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        ArrayList<String> duties = new ArrayList<String>();
+        duties.add("Create a Python program to predict clients needs.");
+        Experience experience1 = new Experience("Software Dev", duties, "J.P. Morgan", "Internship", "May 2019");
+        expTest.add(experience1);
+        Education education1 = new Education("UofSC", "Bachelors of Computer Science", "May 2023");
+        eduTest.add(education1);
+        skillTest.add("Java");
+        skillTest.add("C++");
+        skillTest.add("Python");
+        applicants.add(new Student(id, "Amy Smith", "asmith", "qwerty1234", "803-454-3344", resumes));
+        resumes.add(new Resume("Resume1", expTest, eduTest, skillTest));
+        appList.add(new Application(id2, id2, applicants, resumes));
+        DataWriter.save();
+        assertEquals(id2, DataLoader.loadApplications().get(0).getID());
+    }
+
+    @Test
+    void testWritingFiveApplications() {
+        String id = UUID.randomUUID().toString();
+        ArrayList<String> applicationID = getUuids(5);
+        ArrayList<Student> applicants = new ArrayList<Student>();
+        ArrayList<Resume> resumes = new ArrayList<Resume>();
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        ArrayList<String> duties = new ArrayList<String>();
+        duties.add("Create a Python program to predict clients needs.");
+        Experience experience1 = new Experience("Software Dev", duties, "J.P. Morgan", "Internship", "May 2019");
+        expTest.add(experience1);
+        Education education1 = new Education("UofSC", "Bachelors of Computer Science", "May 2023");
+        eduTest.add(education1);
+        skillTest.add("Java");
+        skillTest.add("C++");
+        skillTest.add("Python");
+        applicants.add(new Student(id, "Amy Smith", "asmith", "qwerty1234", "803-454-3344", resumes));
+        resumes.add(new Resume("Resume1", expTest, eduTest, skillTest));
+        appList.add(new Application(applicationID.get(0), applicationID.get(0), applicants, resumes));
+        appList.add(new Application(applicationID.get(1), applicationID.get(1), applicants, resumes));
+        appList.add(new Application(applicationID.get(2), applicationID.get(2), applicants, resumes));
+        appList.add(new Application(applicationID.get(3), applicationID.get(3), applicants, resumes));
+        appList.add(new Application(applicationID.get(4), applicationID.get(4), applicants, resumes));
+
+        DataWriter.saveApplications();
+        assertEquals(applicationID.get(4), DataLoader.loadApplications().get(4).getID());
+    }
+
+    @Test
+    void testWritingEmptyApplication() {
+        // String id = UUID.randomUUID().toString();
+        String applicationID = UUID.randomUUID().toString();
+        ArrayList<Student> applicants = new ArrayList<Student>();
+        ArrayList<Resume> resumes = new ArrayList<Resume>();
+        ArrayList<Experience> expTest = new ArrayList<Experience>();
+        ArrayList<Education> eduTest = new ArrayList<Education>();
+        ArrayList<String> skillTest = new ArrayList<String>();
+        ArrayList<String> duties = new ArrayList<String>();
+        appList.add(new Application("", "", applicants, resumes));
+        DataWriter.saveApplications();
+        assertEquals("", DataLoader.loadApplications().get(0).getID());
+    }
+
+    @Test
+    void testWritingNullApplications() {
+        appList.add(new Application(null, null, null, null));
+        DataWriter.saveApplications();
+        assertEquals(null, DataLoader.loadApplications().get(0).getID());
+    }
+
+    private ArrayList<String> getUuids(int num) {
+        ArrayList<String> ids = new ArrayList<String>();
         for (int i = 0; i < num; ++i) {
-            UUID id = UUID.randomUUID();
+            String id = UUID.randomUUID().toString();
             ids.add(id);
         }
         return ids;

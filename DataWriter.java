@@ -65,7 +65,7 @@ public class DataWriter {
             jsonResume.add(getResumeJSON(resumes.get(i)));
         }
 
-        writeJsonToFile("resumes.json", jsonResume);
+        writeJsonToFile("resumeTest.json", jsonResume);
     }
 
     /**
@@ -84,7 +84,7 @@ public class DataWriter {
             jsonApplicants.add(getApplicantsJSON(applicant.get(i)));
         }
 
-        writeJsonToFile("applications.json", jsonApplicants);
+        writeJsonToFile("applicationTest.json", jsonApplicants);
     }
 
     /**
@@ -101,42 +101,49 @@ public class DataWriter {
 
         JSONArray eduJSONArray = new JSONArray();
         ArrayList<Education> eduArray = resume.getEducation();
-        for (int i = 0; i < eduArray.size(); i++) {
-            Education edu = eduArray.get(i);
-            JSONObject eduObject = new JSONObject();
-            eduObject.put("school", edu.getSchool());
-            eduObject.put("degree", edu.getDegree());
-            eduObject.put("gpa", edu.getGpa());
+        if (resume.getEducation() != null) {     
+            for (int i = 0; i < eduArray.size(); i++) {
+                Education edu = eduArray.get(i);
+                JSONObject eduObject = new JSONObject();
+                eduObject.put("school", edu.getSchool());
+                eduObject.put("degree", edu.getDegree());
+                eduObject.put("gpa", edu.getGpa());
 
-            eduJSONArray.add(eduObject);
+                eduJSONArray.add(eduObject);
+            }
         }
         resumeDetails.put("education", eduJSONArray);
 
         JSONArray expJSONArray = new JSONArray();
         ArrayList<Experience> expArray = resume.getExperience();
-        for (int i = 0; i < expArray.size(); i++) {
-            Experience exp = expArray.get(i);
-            JSONObject expObject = new JSONObject();
-            expObject.put("title", exp.getTitle());
+        if (resume.getExperience() != null) {
+            for (int i = 0; i < expArray.size(); i++) {
+                Experience exp = expArray.get(i);
+                JSONObject expObject = new JSONObject();
+                expObject.put("title", exp.getTitle());
 
-            JSONArray dutJsonArray = new JSONArray();
-            ArrayList<String> duties = exp.getDutiesList();
-            for (int j=0; j < duties.size(); j++) {
-                dutJsonArray.add(duties.get(j));
+                JSONArray dutJsonArray = new JSONArray();
+                ArrayList<String> duties = exp.getDutiesList();
+                for (int j=0; j < duties.size(); j++) {
+                    dutJsonArray.add(duties.get(j));
+                }
+                expObject.put("duties", dutJsonArray);
+                expObject.put("company", exp.getCompany());
+                expObject.put("type", exp.getType());
+                expObject.put("date", exp.getDate());
+
+                expJSONArray.add(expObject);
             }
-            expObject.put("duties", dutJsonArray);
-            expObject.put("company", exp.getCompany());
-            expObject.put("type", exp.getType());
-            expObject.put("date", exp.getDate());
-
-            expJSONArray.add(expObject);
         }
         resumeDetails.put("experience", expJSONArray);
 
+        
         JSONArray skillsJsonArray = new JSONArray();
         ArrayList<String> skillsArray = resume.getSkills();
-        for (int i = 0; i < skillsArray.size(); i++) {
-            skillsJsonArray.add(skillsArray.get(i));
+        if (resume.getSkills() != null) {
+            for (int i = 0; i < skillsArray.size(); i++) {
+                skillsJsonArray.add(skillsArray.get(i));
+            }
         }
         resumeDetails.put("skills", skillsJsonArray);
 
@@ -156,13 +163,15 @@ public class DataWriter {
         JSONArray appJSONArray = new JSONArray();
         ArrayList<Student> applicant = application.getApplicants();
         ArrayList<Resume> appResume = application.getResumes();
-        for (int i = 0; i < applicant.size(); i++) {
-            JSONObject stuObject = new JSONObject();
-            stuObject.put("user", applicant.get(i).getID());
-            stuObject.put("resume", appResume.get(i).getID());
-            appJSONArray.add(stuObject);
-        }
 
+        if (applicant != null) {
+            for (int i = 0; i < applicant.size(); i++) {
+                JSONObject stuObject = new JSONObject();
+                stuObject.put("user", applicant.get(i).getID());
+                stuObject.put("resume", appResume.get(i).getID());
+                appJSONArray.add(stuObject);
+            }
+        }
         applicantDetails.put("applicants", appJSONArray);
 
         return applicantDetails;
@@ -186,19 +195,21 @@ public class DataWriter {
 
             JSONArray userResArray = new JSONArray();
             ArrayList<Resume> resume = user.getResumes();
-            for (int i = 0; i < resume.size(); i++) {
-                userResArray.add(resume.get(i).getID());
+            if (resume != null) {
+                for (int i = 0; i < resume.size(); i++) {
+                    userResArray.add(resume.get(i).getID());
+                }
             }
-
             userDetails.put("resumes", userResArray);
 
         } else if (user.getType().equals("1")) {
             JSONArray userJsonArray = new JSONArray();
             ArrayList<Job> job = user.getJob();
-            for (int i = 0; i < job.size(); i++) {
-                userJsonArray.add(job.get(i).getID());
+            if (job != null) {
+                for (int i = 0; i < job.size(); i++) {
+                    userJsonArray.add(job.get(i).getID());
+                }
             }
-
             userDetails.put("jobListings", userJsonArray);
         }
 

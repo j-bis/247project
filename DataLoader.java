@@ -19,7 +19,7 @@ public class DataLoader {
         ArrayList<Job> jobList = new ArrayList<Job>();
 
         try {
-            FileReader reader = new FileReader("jobListingsTest.json");
+            FileReader reader = new FileReader("jobListings.json");
             JSONParser parser = new JSONParser();
             JSONArray jobsJSON = (JSONArray) new JSONParser().parse(reader);
 
@@ -145,7 +145,7 @@ public class DataLoader {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
-            FileReader reader = new FileReader("usersTest.json");
+            FileReader reader = new FileReader("users.json");
             JSONParser parser = new JSONParser();
             JSONArray userJSON = (JSONArray) new JSONParser().parse(reader);
 
